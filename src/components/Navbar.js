@@ -6,7 +6,7 @@ import {
 const Navbar = () => {
     return (
         <Stack justifyContent="center" alignItems="center">
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={50}>
                 <Typography variant="navbar_main">home</Typography>
                 <Typography variant="navbar_alt">/</Typography>
                 <Typography variant="navbar_main">about me</Typography>
