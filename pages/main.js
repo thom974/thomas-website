@@ -59,6 +59,7 @@ const Main = () => {
             strokeDashoffset: [anime.setDashoffset, 0],
             easing: 'easeInOutQuint',
             duration: 1500,
+            delay: 2000
         })
 
         anime({
@@ -68,6 +69,7 @@ const Main = () => {
             direction: 'alternate',
             loop: true,
             duration: 1500,
+            delay: 2000
         })
 
         anime({
@@ -76,7 +78,8 @@ const Main = () => {
             easing: 'easeInOutQuint',
             direction: 'alternate',
             duration: 1500,
-            loop: true
+            loop: true,
+            delay: 2000
         })
 
         // Animate 'scroll down' message
@@ -86,7 +89,8 @@ const Main = () => {
             easing: 'easeInOutQuint',
             direction: 'alternate',
             loop: true,
-            duration: 1500
+            duration: 1500,
+            delay: 2000
         })
 
         // Animate colours for 'scroll down' message
@@ -96,7 +100,8 @@ const Main = () => {
             easing: 'easeInOutQuint',
             direction: 'alternate',
             loop: true,
-            duration: 1500
+            duration: 1500,
+            delay: 2000
         })
 
         // Animate logos (linkedin, github, email)
@@ -105,6 +110,7 @@ const Main = () => {
             strokeDashoffset: [anime.setDashoffset, 0],
             easing: 'easeInCirc',
             duration: 1500,
+            delay: 2000
         })
 
         anime({
@@ -112,7 +118,7 @@ const Main = () => {
             fill: '#56642a',
             easing: 'easeInCirc',
             duration: 500,
-            delay: 1500
+            delay: 3500
         })
     })
 

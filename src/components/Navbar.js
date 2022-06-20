@@ -21,7 +21,7 @@ const Navbar = () => {
             translateX: ['+=150%', 0],
             duration: 500,
             easing: 'easeOutBack',
-            delay: 800
+            delay: 2800
         })
 
         anime({
@@ -29,7 +29,7 @@ const Navbar = () => {
             translateX: ['+=-150%', 0],
             duration: 500,
             easing: 'easeOutBack',
-            delay: 800
+            delay: 2800
         })
 
         // Spacer translation animations
@@ -38,6 +38,7 @@ const Navbar = () => {
             translateX: ['+=1250%', 0],
             duration: 1000,
             easing: 'easeInQuint',
+            delay: 2000
         })
 
         anime({
@@ -45,6 +46,7 @@ const Navbar = () => {
             translateX: ['+=-1250%', 0],
             duration: 1000,
             easing: 'easeInQuint',
+            delay: 2000
         })
 
         // Opacity animations
@@ -53,7 +55,7 @@ const Navbar = () => {
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 700
+            delay: 2700
         })
 
         anime({
@@ -61,7 +63,7 @@ const Navbar = () => {
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 300
+            delay: 2300
         })
 
         anime({
@@ -69,7 +71,7 @@ const Navbar = () => {
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 400
+            delay: 2400
         })
 
         anime({
@@ -77,7 +79,7 @@ const Navbar = () => {
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 200
+            delay: 2200
         })
 
         anime({
@@ -85,7 +87,7 @@ const Navbar = () => {
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 200
+            delay: 2200
         })
     })
 
