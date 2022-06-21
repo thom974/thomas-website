@@ -1,10 +1,16 @@
 import Head from 'next/head'
 import Main from './main'
+import About from './about'
+import Projects from './projects'
 
 import { 
   createTheme,
   CssBaseline,
-  ThemeProvider } from '@mui/material'
+  Stack,
+  ThemeProvider, 
+  Typography,
+  Box
+} from '@mui/material'
 
 export default function Home() {
   const theme = createTheme({
@@ -60,7 +66,9 @@ export default function Home() {
         <title>Thomas' Website</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <Main sx={{ width: '100%', height: '100%' }}/>
+      <Main />
+      <About />
+      <Projects />        
     </ThemeProvider>
   )
 }

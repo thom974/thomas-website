@@ -1,5 +1,6 @@
 import Navbar from "../src/components/Navbar"
 import Intro from "../src/components/Intro"
+import Panda from "../src/components/Panda"
 
 import anime from "animejs"
 
@@ -16,8 +17,8 @@ import {
 const Main = () => {
     useEffect(() => {
         const line = document.querySelector('.line-svg path')
-        const lineAnim = document.querySelector('.line-svg-anim path')
         
+        const lineAnim = document.querySelector('.line-svg-anim path')
         const lineSvg = document.querySelector('.line-svg')
         const lineAnimSvg = document.querySelector('.line-svg-anim')
         lineSvg.style.visibility = 'visible'
@@ -128,8 +129,10 @@ const Main = () => {
             spacing={0} 
             alignItems='center' 
             justifyContent='center'
-            mt={50}
+            pt={50}
             height='100%'
+            width='100%'
+            className='scroll-snap-child'
         >
             <Stack
                 className='logo-bar'
@@ -166,12 +169,13 @@ const Main = () => {
 
             <Stack
                 direction='column'
-                spacing={120}
+                spacing={0}
                 width='50%'
                 height='inherit'
             >
                 <Navbar />
                 <Intro />
+                {/* <Panda /> */}
             </Stack>
 
             <Stack
