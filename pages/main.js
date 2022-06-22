@@ -70,7 +70,7 @@ const Main = () => {
             direction: 'alternate',
             loop: true,
             duration: 1500,
-            delay: 2000
+            delay: 2000,
         })
 
         anime({
@@ -80,7 +80,7 @@ const Main = () => {
             direction: 'alternate',
             duration: 1500,
             loop: true,
-            delay: 2000
+            delay: 2000,
         })
 
         // Animate 'scroll down' message
@@ -91,7 +91,7 @@ const Main = () => {
             direction: 'alternate',
             loop: true,
             duration: 1500,
-            delay: 2000
+            delay: 2000,
         })
 
         // Animate colours for 'scroll down' message
@@ -102,7 +102,7 @@ const Main = () => {
             direction: 'alternate',
             loop: true,
             duration: 1500,
-            delay: 2000
+            delay: 2000,
         })
 
         // Animate logos (linkedin, github, email)
