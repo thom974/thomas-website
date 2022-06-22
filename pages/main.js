@@ -16,11 +16,11 @@ import {
 
 const Main = () => {
     useEffect(() => {
-        const line = document.querySelector('.line-svg path')
+        const line = document.querySelector('.intro-line-svg path')
         
-        const lineAnim = document.querySelector('.line-svg-anim path')
-        const lineSvg = document.querySelector('.line-svg')
-        const lineAnimSvg = document.querySelector('.line-svg-anim')
+        const lineAnim = document.querySelector('.intro-line-svg-anim path')
+        const lineSvg = document.querySelector('.intro-line-svg')
+        const lineAnimSvg = document.querySelector('.intro-line-svg-anim')
         lineSvg.style.visibility = 'visible'
         lineAnimSvg.style.visibility = 'visible'
 
@@ -157,7 +157,7 @@ const Main = () => {
                 </svg>
 
                 <svg 
-                    className='line-svg'
+                    className='intro-line-svg'
                     height='50%'
                     width='46px'
                     viewBox='0 0 2 400'
@@ -191,7 +191,7 @@ const Main = () => {
                 pb={53}
             >
                 <svg 
-                    className='line-svg-anim'
+                    className='intro-line-svg-anim'
                     height='50%'
                     width='46px'
                     viewBox='0 0 2 400'
