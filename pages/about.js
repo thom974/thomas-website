@@ -4,116 +4,16 @@ import {
     Box
 } from '@mui/material'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
-import anime from "animejs"
 
 const About = () => {
     useEffect(() => {
-        const aboutNumbers = document.querySelector('.about-sidebar-numbers')
-        const aboutLetters = document.querySelector('.about-sidebar-letters')
-        const aboutSvg = document.querySelector('.about-sidebar-svg')
-
-        const aboutNumberTargets = []
-        const aboutLetterTargets = []
-
-        for (let i=0; i<aboutNumbers.children.length; i++) {
-            const pathLength = aboutNumbers.children[i].getTotalLength()
-            aboutNumbers.children[i].setAttribute('stroke-dasharray', pathLength)
-            aboutNumbers.children[i].setAttribute('stroke-dashoffset', pathLength)
-            aboutNumberTargets.push(aboutNumbers.children[i])
-        }
-
-        for (let i=0; i<aboutLetters.children.length; i++) {
-            const pathLength = aboutLetters.children[i].getTotalLength()
-            aboutLetters.children[i].setAttribute('stroke-dasharray', pathLength)
-            aboutLetters.children[i].setAttribute('stroke-dashoffset', pathLength)
-            aboutLetterTargets.push(aboutLetters.children[i])
-        }
-
-        /**
-         * Animating about me heading
-         */
-
-        const tl = anime.timeline({
-
-        })
-
-        // Animate text siz and line (INITIAL ANIMATIONS)
-        anime({
-            targets: aboutSvg,
-            keyframes: [
-                { width: 144, height: 707, duration: 0 },
-                { translateX: '+=30vw', duration: 0 }, 
-                { width: 48, height: 235.77, duration: 1000, delay: 3600, easing: 'easeInCirc' },
-                { translateX: 0, duration: 1500, easing: 'easeOutQuint'}
-            ]
-        })
-        
-        anime({
-            targets: '.main-line-svg-anim',
-            keyframes: [
-                { height: 0, duration: 0},
-            ]
-        })
-
-        // Animate dash offset for numbers
-        tl.add({
-            targets: aboutNumberTargets,
-            keyframes: [
-                { translateX: ['+=-50vh', 0], easing: 'easeOutQuint', delay: anime.stagger(200) },
-            ]            
-        }, 0)
-       
-        tl.add({
-            targets: aboutNumberTargets,
-            strokeDashoffset: [anime.setDashoffset, 0],
-            easing: 'easeInOutQuint',
-            delay: anime.stagger(200),
-        }, 400)
-
-        tl.add({
-            targets: aboutNumberTargets,
-            fill: '#A7BC5B',
-            easing: 'easeInOutQuint',
-            delay: anime.stagger(300)
-        }, 400)
-
-        // Animate dash offset for letters
-        tl.add({
-            targets: aboutLetterTargets,
-            translateX: ["+=-50vh", 0],
-            easing: 'easeOutQuint',
-            delay: anime.stagger(200)
-        }, 800)
-
-        tl.add({
-            targets: aboutLetterTargets,
-            strokeDashoffset: [anime.setDashoffset, 0],
-            easing: 'easeInOutQuint',
-            delay: anime.stagger(200)
-        }, 1200)
-
-
-        tl.add({
-            targets: aboutLetterTargets,
-            fill: '#56642A',
-            easing: 'easeInOutQuint',
-            delay: anime.stagger(300)
-        }, 1200)
-
-        // Animate line growing
-        tl.add({
-            targets: '.main-line-svg-anim',
-            height: '50%',
-            easing: 'easeInOutQuint'
-        }, 5100)
-
     })
 
     return (
         <Stack 
-            className='scroll-snap-child'
+            className='scroll-snap-child about-stack'
             width='100%'
             height='100%'
             justifyContent='center'
@@ -122,7 +22,7 @@ const About = () => {
         >
             <Stack
                 className='about-sidebar'
-                width='25%'
+                width='10%'
                 height='100%'
                 direction='column'
                 justifyContent='center'
@@ -137,12 +37,12 @@ const About = () => {
                     height='50%'
                     width='46px'
                     viewBox='0 0 2 400'
-                    visibility='visible'
+                    visibility='hidden'
                 >
                     <path stroke='#56642A' strokeWidth={2} d='M0 400 V 0' />
                 </svg>
                 
-                <svg className='about-sidebar-svg' width="48.000038" height="235.779432" viewBox="0 0 12.70001 62.383308" version="1.1" id="svg237" strokeWidth={0.3}>
+                <svg className='about-sidebar-svg' width="48.000038" height="235.779432" viewBox="0 0 12.70001 62.383308" version="1.1" id="svg237" strokeWidth={0.3} visibility='hidden'>
                     <g id="layer1" transform="translate(-101.11143 -104.97777)">
                         <g className='about-sidebar-numbers' aria-label="1" transform="rotate(90)" id="text3269" opacity={0.217} fill='none' stroke='#A7BC5B'>
                             <path d="M110.12833-101.11143q-1.46403 0-2.64583-.74083-1.16417-.74084-1.83445-2.15195-.67028-1.42875-.67028-3.45722 0-2.02848.67028-3.43959.67028-1.42875 1.83445-2.16958 1.1818-.74084 2.64583-.74084 1.48167 0 2.64584.74084 1.16416.74083 1.83444 2.16958.68792 1.41111.68792 3.43959 0 2.02847-.68792 3.45722-.67028 1.41111-1.83444 2.15195-1.16417.74083-2.64584.74083zm0-1.9932q.86431 0 1.49931-.45861.635-.47625.98778-1.44639.37041-.97014.37041-2.4518 0-1.49931-.37041-2.45181-.35278-.97014-.98778-1.42875-.635-.47625-1.49931-.47625-.82903 0-1.48167.47625-.635.45861-1.00541 1.42875-.35278.9525-.35278 2.45181 0 1.48166.35278 2.4518.37041.97014 1.00541 1.44639.65264.45861 1.48167.45861z" id="path3281"/>
@@ -163,25 +63,60 @@ const About = () => {
             <Stack
                 className='about-main'
                 direction='row'
-                width='75%'
+                width='90%'
                 height='100%'
                 justifyContent='center'
                 alignItems='center'
-                spacing={150}
+                spacing={200}
             >
                 <Stack
                     className='about-text'
                     direction='column'
-                    width='40%'
+                    width='50%'
                     height='100%'
                     justifyContent='center'
                     alignItems='flex-start'
-                    spacing={10}
+                    spacing={100}
                 >
-
+                    <Stack
+                        className='about-text-entry'
+                        width='100%'
+                        height='10%'
+                        sx={{
+                            position: 'relative',
+                            zIndex: -1
+                        }}
+                    >
+                        <Typography className='about-text-content' variant='text_main_anim' sx={{ position: 'absolute', top: 0, left: 0, zIndex: -1, color: 'transparent' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis.</Typography>
+                        <Typography visibility='hidden' className='about-text-overlay' variant='text_main_anim' sx={{ position: 'absolute', top: 0, left: 0, zIndex: 0, background: '#A7BC5B', color: 'transparent' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis.</Typography>                     
+                    </Stack>
+                    <Stack
+                        className='about-text-entry'
+                        width='100%'
+                        height='10%'
+                        sx={{
+                            position: 'relative',
+                            zIndex: -1
+                        }}
+                    >
+                        <Typography className='about-text-content' variant='text_main_anim' sx={{ position: 'absolute', top: 0, left: 0, zIndex: -1, color: 'transparent' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis.</Typography>
+                        <Typography visibility='hidden' className='about-text-overlay' variant='text_main_anim' sx={{ position: 'absolute', top: 0, left: 0, zIndex: 0, background: '#A7BC5B', color: 'transparent' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis.</Typography>                     
+                    </Stack>
+                    <Stack
+                        className='about-text-entry'
+                        width='100%'
+                        height='10%'
+                        sx={{
+                            position: 'relative',
+                            zIndex: -1
+                        }}
+                    >
+                        <Typography className='about-text-content' variant='text_main_anim' sx={{ position: 'absolute', top: 0, left: 0, zIndex: -1, color: 'transparent' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis.</Typography>
+                        <Typography visibility='hidden' className='about-text-overlay' variant='text_main_anim' sx={{ position: 'absolute', top: 0, left: 0, zIndex: 0, background: '#A7BC5B', color: 'transparent' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis.</Typography>                     
+                    </Stack>
                 </Stack>
 
-                <Box component='div' sx={{ width: 513, height: 688, background: '#A7BC5B' }}>
+                <Box visibility='hidden' className='bamboo-model' component='div' sx={{ width: 513, height: 688, background: '#A7BC5B', color: '#A7BC5B' }}>
 
                 </Box>
             </Stack>
