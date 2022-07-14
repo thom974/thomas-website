@@ -4,14 +4,19 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  overflow: hidden;
   height: 100%;
-  width: 100%
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 div#__next {
   width: 100%;
   height: 100%;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
 
 a {
@@ -23,6 +28,6 @@ a {
   box-sizing: border-box;
 }
 
-.vertical_rl {
-  writing-mode: vertical-rl;
+.scroll-snap-child {
+  scroll-snap-align: start;
 }

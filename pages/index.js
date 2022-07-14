@@ -1,10 +1,21 @@
 import Head from 'next/head'
 import Main from './main'
+import About from './about'
+import Projects from './projects'
+
+import aboutAnim from '../src/utils/aboutAnim'
+import mainAnim from '../src/utils/mainAnim'
 
 import { 
   createTheme,
   CssBaseline,
-  ThemeProvider } from '@mui/material'
+  Stack,
+  ThemeProvider, 
+  Typography,
+  Box
+} from '@mui/material'
+
+import { useEffect, useRef } from 'react'
 
 export default function Home() {
   const theme = createTheme({
@@ -47,11 +58,45 @@ export default function Home() {
           'sans-serif'
         ].join(','),
         fontWeight: '600'
-      }
+      },
+      text_main_anim: {
+        color: '#000000',
+        background: '#ffffff',
+        letterSpacing: '0.02em',
+        fontSize: 30,
+        fontFamily: [
+          'Montserrat', 
+          'sans-serif'
+        ].join(','),
+        fontWeight: '600'
+      },
     },
     components: {
       
     }
+  })
+
+  let aboutActive = true
+  let projectsActive = true
+
+  useEffect(() => {
+    const div = document.querySelector('#__next')
+    
+    div.addEventListener('scroll' , () => {
+      /**
+       * CHECK IF SECTIONS ARE VISIBLE, THEN PLAY ANIMATION
+       */
+
+      const aboutStack = document.querySelector('.about-stack')
+      const aboutStackRect = aboutStack.getBoundingClientRect()
+
+      if (aboutStackRect.top <= window.innerHeight * 0.5 && aboutActive) {
+        aboutAnim()
+        aboutActive = false
+      }
+    })
+
+    mainAnim()
   })
 
   return ( 
@@ -60,7 +105,9 @@ export default function Home() {
         <title>Thomas' Website</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <Main sx={{ width: '100%', height: '100%' }}/>
+      <Main />
+      <About />
+      <Projects />        
     </ThemeProvider>
   )
 }

@@ -73,6 +73,8 @@ const Intro = () => {
 
     return (
         <Stack
+            mb={75}
+            mt={120}
             direction='column'
             spacing={90}
             alignItems='flex-start'
