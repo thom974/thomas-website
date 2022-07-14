@@ -69,7 +69,7 @@ const Main = () => {
             >
                 <Navbar />
                 <Intro />
-                {/* <Panda /> */}
+                <Panda />
             </Stack>
 
             <Stack

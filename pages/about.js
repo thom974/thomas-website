@@ -6,9 +6,12 @@ import {
 
 import { useEffect, useRef } from 'react'
 
+import anime from "animejs"
 
 const About = () => {
+    let currY = 0
     useEffect(() => {
+        currY = window.innerHeight * 0.5
     })
 
     return (
