@@ -21,14 +21,19 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 import { useEffect } from 'react'
+import anime from 'animejs'
 
 const Panda = () => {
     useEffect(() => {
         // Setting up canvas and scene
         const canvas = document.querySelector('.webgl')
         canvas.style.visibility = 'visible'
+        canvas.style.opacity = 0
         const scene = new Scene()
 
+        // Setting up animation timeline
+        const tl = anime.timeline()
+        
         // Setting up loader
         const loader = new GLTFLoader()
         loader.load(
@@ -38,6 +43,18 @@ const Panda = () => {
                 gltf.scene.children[0].receiveShadow = true
                 gltf.scene.scale.set(0.24, 0.24, 0.24)
                 scene.add(gltf.scene)
+
+                // Handle animations once panda is loaded
+                anime({
+                    targets: scene.children[3].children[0].rotation,
+                    z: [`+=${Math.PI * 2 * 5}`, '+=0'],
+                    duration: 2000,
+                    easing: 'easeInOutCubic',
+                    delay: 1000,
+                    direction: 'alternate',
+                    loop: true
+                })
+                tick()
             }, 
             (xhr) => {},
             (error) => {
@@ -66,10 +83,10 @@ const Panda = () => {
         console.log(dLight.shadow)
 
         // Setting up camera
-        const camera = new OrthographicCamera(-1.1, 1.1, 1.1, -1.1, 0.01, 100)
-        camera.position.y = 0.5
-        camera.position.z = -0.5
-        camera.position.x = 0.5
+        const camera = new OrthographicCamera(-1.15, 1.15, 1.15, -1.15, 0.001, 100)
+        camera.position.y = 1
+        camera.position.z = -1
+        camera.position.x = 1
         
         camera.lookAt(0,0,0)
         scene.add(camera)
@@ -90,14 +107,21 @@ const Panda = () => {
         const controls = new OrbitControls(camera, canvas)
         controls.enableDamping = true
 
+        // Animating function
         const tick = () => {
-            // plane.rotation.z += 0.02
             renderer.render(scene, camera)
             window.requestAnimationFrame(tick)
             controls.update()
         }
 
-        tick()
+        // Animate opacity of canvas
+        anime({
+            targets: canvas,
+            opacity: 1,
+            duration: 1000,
+            easing: 'easeInSine',
+            delay: 3200
+        })
     })    
 
     return (
