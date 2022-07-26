@@ -14,7 +14,8 @@ import {
     PCFSoftShadowMap,
     sRGBEncoding,
     ReinhardToneMapping,
-    CineonToneMapping
+    CineonToneMapping,
+    Clock
 } from 'three'
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -31,6 +32,9 @@ const Panda = () => {
         canvas.style.opacity = 0
         const scene = new Scene()
 
+        // Setup clock
+        const clock = new Clock(false)
+        
         // Setting up loader
         const loader = new GLTFLoader()
         loader.load(
@@ -42,15 +46,23 @@ const Panda = () => {
                 scene.add(gltf.scene)
 
                 // Handle animations once panda is loaded
-                anime({
-                    targets: scene.children[3].children[0].rotation,
-                    z: [`+=${Math.PI * 2 * 5}`, '+=0'],
-                    duration: 3000,
-                    easing: 'easeInOutSine',
-                    delay: 1000,
-                    direction: 'alternate',
-                    loop: true
-                })
+                // anime({
+                //     targets: scene.children[3].children[0].rotation,
+                //     z: [`+=${Math.PI * 2 * 8}`, '+=0'],
+                //     duration: 3000,
+                //     easing: 'easeOutSine',
+                //     delay: 1750,
+                //     complete: (anim) => {
+                //         clock.start()
+                //         console.log('started the clock!')
+                //     }
+                // })
+                // anime({
+                //     targets: scene.children[3].children[0].rotation,
+                //     z: `+=${Math.PI * 2}`,
+                //     duration: 2000,
+                //     delay: 5000
+                // })
 
                 tick()
             }, 
@@ -98,7 +110,9 @@ const Panda = () => {
         const tick = () => {
             renderer.render(scene, camera)
             window.requestAnimationFrame(tick)
-            // controls.update()
+            if (clock.running){
+                scene.children[3].children[0].rotation.z += 0.5 / (10 * clock.getElapsedTime() + 0.5) 
+            }
         }
 
         // Animate opacity of canvas
@@ -107,7 +121,10 @@ const Panda = () => {
             opacity: 1,
             duration: 1000,
             easing: 'easeInSine',
-            delay: 3200
+            delay: 3200,
+            complete: (anim) => {
+                clock.start()
+            }
         })
     })    
 

@@ -143,7 +143,12 @@ const aboutAnim = () => {
         opacity: 1,
         easing: 'easeInSine',
         duration: 500,
-        delay: 6250
+        delay: 6250,
+        complete: (anim) => {
+            const bambooEvent = new Event('bamboo')
+            window.dispatchEvent(bambooEvent)
+            console.log('bamboo loaded!')
+        }
     })
 }
 

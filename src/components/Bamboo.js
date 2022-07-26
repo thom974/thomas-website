@@ -5,14 +5,15 @@ import {
     OrthographicCamera,
     WebGLRenderer,
     PCFSoftShadowMap,
-    sRGBEncoding
+    sRGBEncoding,
+    Clock
 } from 'three'
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 import { useEffect } from 'react'
-import anime from 'animejs'
+import EventEmitter from '../utils/EventEmitter'
 
 const Bamboo = () => {
     useEffect(() => {
@@ -20,6 +21,14 @@ const Bamboo = () => {
         const canvas = document.querySelector('.bamboo-webgl')
         canvas.style.opacity = 0
         const scene = new Scene()
+
+        // Setting up clock and event emitter
+        const clock = new Clock(false)
+
+        window.addEventListener('bamboo', ()=> {
+            console.log('bamboo event heard!')
+            clock.start()
+        })
 
         // Setting up loader
         const loader = new GLTFLoader
@@ -32,7 +41,6 @@ const Bamboo = () => {
                 gltf.scene.position.y -= 0.9
                 
                 scene.add(gltf.scene)
-
                 tick()
             }, 
             (xhr) => {},
@@ -77,10 +85,11 @@ const Bamboo = () => {
         
         // Animating function
         const tick = () => {
-            scene.children[3].children[0].rotation.z += 0.01
             renderer.render(scene, camera)
             window.requestAnimationFrame(tick)
-            // controls.update()
+            if (clock.running) {
+                scene.children[3].children[0].rotation.z += 0.5 / (10 * clock.getElapsedTime() + 0.5)
+            }
         }
     })
 
