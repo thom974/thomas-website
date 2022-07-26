@@ -53,7 +53,7 @@ const Bamboo = () => {
 
         // Setting up camera
         const camera = new OrthographicCamera(-1.15, 1.15, 1.15, -1.15, 0.001, 100)
-        camera.position.y = 1
+        camera.position.y = 0.8
         camera.position.z = -1
         camera.position.x = 1
         
@@ -73,15 +73,14 @@ const Bamboo = () => {
 
         // Setting up controls
         const controls = new OrbitControls(camera, canvas)
-        controls.enableDamping = true
+        controls.enabled = false
         
         // Animating function
         const tick = () => {
             scene.children[3].children[0].rotation.z += 0.01
-
             renderer.render(scene, camera)
             window.requestAnimationFrame(tick)
-            controls.update()
+            // controls.update()
         }
     })
 

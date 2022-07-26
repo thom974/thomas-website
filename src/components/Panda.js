@@ -45,8 +45,8 @@ const Panda = () => {
                 anime({
                     targets: scene.children[3].children[0].rotation,
                     z: [`+=${Math.PI * 2 * 5}`, '+=0'],
-                    duration: 2000,
-                    easing: 'easeInOutCubic',
+                    duration: 3000,
+                    easing: 'easeInOutSine',
                     delay: 1000,
                     direction: 'alternate',
                     loop: true
@@ -81,7 +81,7 @@ const Panda = () => {
         // Setting up renderer
         const renderer = new WebGLRenderer({ canvas: canvas }) 
 
-        renderer.setSize(400, 400)
+        renderer.setSize(600, 600)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         renderer.setClearColor(0xffffff, 0)
         renderer.shadowMap.type = PCFSoftShadowMap
@@ -92,13 +92,13 @@ const Panda = () => {
 
         // Setting up controls
         const controls = new OrbitControls(camera, canvas)
-        controls.enableDamping = true
+        controls.enabled = false
 
         // Animating function
         const tick = () => {
             renderer.render(scene, camera)
             window.requestAnimationFrame(tick)
-            controls.update()
+            // controls.update()
         }
 
         // Animate opacity of canvas
@@ -112,7 +112,7 @@ const Panda = () => {
     })    
 
     return (
-        <canvas className='panda-webgl' width={400} height={400} visibility='hidden'/>
+        <canvas className='panda-webgl' visibility='hidden'/>
     )
 }
 
