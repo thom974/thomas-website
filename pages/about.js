@@ -8,6 +8,8 @@ import { useEffect, useRef } from 'react'
 
 import anime from "animejs"
 
+import Bamboo from '../src/components/Bamboo'
+
 const About = () => {
     let currY = 0
     useEffect(() => {
@@ -119,9 +121,8 @@ const About = () => {
                     </Stack>
                 </Stack>
 
-                <Box visibility='hidden' className='bamboo-model' component='div' sx={{ width: 513, height: 688, background: '#A7BC5B', color: '#A7BC5B' }}>
-
-                </Box>
+                {/* <Box visibility='hidden' className='bamboo-model' component='div' sx={{ width: 513, height: 688, background: '#A7BC5B', color: '#A7BC5B' }}></Box> */}
+                <Bamboo />
             </Stack>
         </Stack>
     )
