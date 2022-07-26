@@ -5,7 +5,7 @@ const aboutAnim = () => {
     const aboutLetters = document.querySelector('.about-sidebar-letters')
     const aboutSvg = document.querySelector('.about-sidebar-svg')
     const lineAnimSvg = document.querySelector('.main-line-svg-anim')
-    const bambooModel = document.querySelector('.bamboo-model')
+    const bambooModel = document.querySelector('.bamboo-webgl')
 
     aboutSvg.style.visibility = 'visible'
     lineAnimSvg.style.visibility = 'visible'
@@ -122,12 +122,6 @@ const aboutAnim = () => {
     })
 
     anime({
-        targets: '.bamboo-model',
-        height: 0,
-        duration: 0
-    })
-
-    anime({
         targets: '.about-text .about-text-entry .about-text-overlay',
         height: '100%',
         duration: 750, 
@@ -143,14 +137,14 @@ const aboutAnim = () => {
         delay: 5800
     })
 
+    // Animate canvas opacity
     anime({
-        targets: '.bamboo-model',
-        height: 688,
-        easing: 'easeInOutQuint',
-        duration: 750,
-        delay: 5100
+        targets: '.bamboo-webgl',
+        opacity: 1,
+        easing: 'easeInSine',
+        duration: 500,
+        delay: 6250
     })
-
 }
 
 export default aboutAnim

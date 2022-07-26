@@ -1,20 +1,11 @@
 import { 
-    Scene, 
+    Scene,
+    AmbientLight,
+    DirectionalLight,
     OrthographicCamera,
     WebGLRenderer,
-    Mesh, 
-    PlaneGeometry,
-    MeshBasicMaterial,
-    DoubleSide,
-    AmbientLight,
-    BoxGeometry,
-    MeshStandardMaterial,
-    PointLight,
-    DirectionalLight,
     PCFSoftShadowMap,
-    sRGBEncoding,
-    ReinhardToneMapping,
-    CineonToneMapping
+    sRGBEncoding
 } from 'three'
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -23,43 +14,33 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { useEffect } from 'react'
 import anime from 'animejs'
 
-const Panda = () => {
+const Bamboo = () => {
     useEffect(() => {
         // Setting up canvas and scene
-        const canvas = document.querySelector('.panda-webgl')
-        canvas.style.visibility = 'visible'
+        const canvas = document.querySelector('.bamboo-webgl')
         canvas.style.opacity = 0
         const scene = new Scene()
 
         // Setting up loader
-        const loader = new GLTFLoader()
+        const loader = new GLTFLoader
         loader.load(
-            'models/panda_2.gltf', 
+            'models/bamboo_2.gltf',
             (gltf) => {
                 gltf.scene.children[0].castShadow = true
                 gltf.scene.children[0].receiveShadow = true
-                gltf.scene.scale.set(0.24, 0.24, 0.24)
+                gltf.scene.scale.set(0.16, 0.16, 0.16)
+                gltf.scene.position.y -= 0.9
+                
                 scene.add(gltf.scene)
-
-                // Handle animations once panda is loaded
-                anime({
-                    targets: scene.children[3].children[0].rotation,
-                    z: [`+=${Math.PI * 2 * 5}`, '+=0'],
-                    duration: 2000,
-                    easing: 'easeInOutCubic',
-                    delay: 1000,
-                    direction: 'alternate',
-                    loop: true
-                })
 
                 tick()
             }, 
             (xhr) => {},
             (error) => {
-                console.log('there was an error loading the panda model')
+                console.log('there was an error loading the bamboo model')
             }
         )
-        
+
         // Setting up lights
         const light = new AmbientLight(0xffffff, 1.5)
         const dLight = new DirectionalLight(0xffffff, 2)
@@ -75,13 +56,13 @@ const Panda = () => {
         camera.position.y = 1
         camera.position.z = -1
         camera.position.x = 1
-    
+        
         scene.add(camera)
         
         // Setting up renderer
         const renderer = new WebGLRenderer({ canvas: canvas }) 
 
-        renderer.setSize(400, 400)
+        renderer.setSize(500, 690)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         renderer.setClearColor(0xffffff, 0)
         renderer.shadowMap.type = PCFSoftShadowMap
@@ -93,27 +74,20 @@ const Panda = () => {
         // Setting up controls
         const controls = new OrbitControls(camera, canvas)
         controls.enableDamping = true
-
+        
         // Animating function
         const tick = () => {
+            scene.children[3].children[0].rotation.z += 0.01
+
             renderer.render(scene, camera)
             window.requestAnimationFrame(tick)
             controls.update()
         }
-
-        // Animate opacity of canvas
-        anime({
-            targets: canvas,
-            opacity: 1,
-            duration: 1000,
-            easing: 'easeInSine',
-            delay: 3200
-        })
-    })    
+    })
 
     return (
-        <canvas className='panda-webgl' width={400} height={400} visibility='hidden'/>
+        <canvas className='bamboo-webgl' visibility='hidden' />
     )
 }
 
-export default Panda
+export default Bamboo
