@@ -16,6 +16,7 @@ import {
 } from '@mui/material'
 
 import { useEffect, useRef } from 'react'
+import EventEmitter from '../src/utils/EventEmitter'
 
 export default function Home() {
   const theme = createTheme({
@@ -81,7 +82,7 @@ export default function Home() {
 
   useEffect(() => {
     const div = document.querySelector('#__next')
-    
+
     div.addEventListener('scroll' , () => {
       /**
        * CHECK IF SECTIONS ARE VISIBLE, THEN PLAY ANIMATION
