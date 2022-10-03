@@ -4,7 +4,7 @@ const aboutAnim = () => {
     const aboutNumbers = document.querySelector('.about-sidebar-numbers')
     const aboutLetters = document.querySelector('.about-sidebar-letters')
     const aboutSvg = document.querySelector('.about-sidebar-svg')
-    const lineAnimSvg = document.querySelector('.main-line-svg-anim')
+    const lineAnimSvg = document.querySelector('.about-line-svg-anim')
     const bambooModel = document.querySelector('.bamboo-webgl')
 
     aboutSvg.style.visibility = 'visible'
@@ -51,7 +51,7 @@ const aboutAnim = () => {
     })
     
     anime({
-        targets: '.main-line-svg-anim',
+        targets: '.about-line-svg-anim',
         keyframes: [
             { height: 0, duration: 0},
         ]
@@ -105,7 +105,7 @@ const aboutAnim = () => {
 
     // Animate line growing
     tl.add({
-        targets: '.main-line-svg-anim',
+        targets: '.about-line-svg-anim',
         height: '50%',
         duration: 1000,
         easing: 'easeInOutQuint'
