@@ -5,6 +5,7 @@ import Projects from './projects'
 
 import aboutAnim from '../src/utils/aboutAnim'
 import mainAnim from '../src/utils/mainAnim'
+import projectsAnim from '../src/utils/projectsAnim'
 
 import { 
   createTheme,
@@ -91,9 +92,17 @@ export default function Home() {
       const aboutStack = document.querySelector('.about-stack')
       const aboutStackRect = aboutStack.getBoundingClientRect()
 
+      const projectsStack = document.querySelector('.projects-stack')
+      const projectsStackRect = projectsStack.getBoundingClientRect() 
+
       if (aboutStackRect.top <= window.innerHeight * 0.5 && aboutActive) {
         aboutAnim()
         aboutActive = false
+      }
+
+      if (projectsStackRect.top <= window.innerHeight * 0.5 && projectsActive) {
+        projectsAnim()
+        projectsActive = false
       }
     })
 
