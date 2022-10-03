@@ -11,11 +11,6 @@ import anime from "animejs"
 import Bamboo from '../src/components/Bamboo'
 
 const About = () => {
-    let currY = 0
-    useEffect(() => {
-        currY = window.innerHeight * 0.5
-    })
-
     return (
         <Stack 
             className='scroll-snap-child about-stack'
@@ -38,7 +33,7 @@ const About = () => {
                 pb={53}
             >
                 <svg 
-                    className='main-line-svg-anim'
+                    className='about-line-svg-anim'
                     height='50%'
                     width='46px'
                     viewBox='0 0 2 400'
