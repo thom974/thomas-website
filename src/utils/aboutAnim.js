@@ -147,7 +147,6 @@ const aboutAnim = () => {
         complete: (anim) => {
             const bambooEvent = new Event('bamboo')
             window.dispatchEvent(bambooEvent)
-            console.log('bamboo loaded!')
         }
     })
 }
