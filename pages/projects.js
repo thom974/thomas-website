@@ -1,4 +1,43 @@
 import { Stack, Typography } from "@mui/material"
+import { styled } from "@mui/system"
+
+// Custom styled components for projects list.
+const PList = styled('ol')({
+    listStyleType: 'none',
+    position: 'relative',
+    color: '#A7BC5B',
+    fontSize: 50,
+    fontFamily: [
+        'Archivo', 
+        'sans-serif'
+    ].join(','),
+    fontWeight: '600',
+    letterSpacing: '0.08em',
+    paddingLeft: '0',
+    counterReset: 'my-counter'
+})
+
+const PItem = styled('li')({
+    position: 'relative',
+    paddingTop: '20%',
+    paddingBottom: '20%',
+    '&::before': {
+        fontWeight: '400',
+        fontSize: '16px',
+        fontFamily: [
+            'Archivo', 
+            'sans-serif'
+        ].join(','),
+        counterIncrement: 'my-counter 1',
+        content: '"0"counter(my-counter)',
+        color: '#56642A',
+        position: 'absolute',
+        transformOrigin: '100% 100%',
+        transform: 'translateY(-50%) rotate(-90deg)',
+        top: '35%',
+        right: 'calc(100% + 25px)',
+    }
+})
 
 const Projects = () => {
     return (
@@ -64,9 +103,32 @@ const Projects = () => {
                 width='90%'
                 height='100%'
                 direction='row'
-                alignItems='center'
+                justifyContent='flex-start'
+                spacing='20%'
             >
-                {/* <Typography>sample text: projects</Typography> */}
+                <Stack
+                    width='40%'
+                    height='100%'
+                    direction='column'
+                    justifyContent='center'
+                    alignItems='center'
+                >
+                    <PList>
+                        <PItem>Project #1</PItem>
+                        <PItem>Project #2</PItem>
+                        <PItem>Project #3</PItem>
+                        <PItem>Project #4</PItem>
+                    </PList>
+                </Stack>
+
+                <Stack
+                    width='40%'
+                    height='100%'
+                    direction='column'
+                    justifyContent='center'
+                >
+                    
+                </Stack>
             </Stack>
         </Stack>
     )

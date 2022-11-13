@@ -85,7 +85,7 @@ const projectsAnim = () => {
         fill: '#56642A',
         easing: 'easeInOutQuint',
         delay: anime.stagger(200)
-    }, 1600)
+    }, 1500)
 
     // Animate line growing
     tl.add({
