@@ -6,7 +6,7 @@ const PList = styled('ol')({
     listStyleType: 'none',
     position: 'relative',
     color: '#A7BC5B',
-    fontSize: 50,
+    fontSize: 60,
     fontFamily: [
         'Archivo', 
         'sans-serif'
@@ -19,8 +19,8 @@ const PList = styled('ol')({
 
 const PItem = styled('li')({
     position: 'relative',
-    paddingTop: '20%',
-    paddingBottom: '20%',
+    paddingTop: '15%',
+    paddingBottom: '15%',
     '&::before': {
         fontWeight: '400',
         fontSize: '16px',
@@ -36,6 +36,17 @@ const PItem = styled('li')({
         transform: 'translateY(-50%) rotate(-90deg)',
         top: '35%',
         right: 'calc(100% + 25px)',
+    },
+})
+
+const PItemContent = styled('a')({
+    display: 'inline-block',
+    position: 'relative',
+    transition: '0.3s',
+    '&:hover': {
+        '-webkit-text-fill-color' : 'transparent',
+        '-webkit-text-stroke': '0.05px #56642A',
+        transform: 'translateX(20%)'
     }
 })
 
@@ -113,11 +124,14 @@ const Projects = () => {
                     justifyContent='center'
                     alignItems='center'
                 >
-                    <PList>
-                        <PItem>Project #1</PItem>
-                        <PItem>Project #2</PItem>
-                        <PItem>Project #3</PItem>
-                        <PItem>Project #4</PItem>
+                    <PList 
+                        className='projects-entries'
+                        visibility='hidden'
+                    >
+                        <PItem className='project-entry'><PItemContent>Project #1</PItemContent></PItem>
+                        <PItem className='project-entry'><PItemContent>Project #2</PItemContent></PItem>
+                        <PItem className='project-entry'><PItemContent>Project #3</PItemContent></PItem>
+                        <PItem className='project-entry'><PItemContent>Project #4</PItemContent></PItem>
                     </PList>
                 </Stack>
 

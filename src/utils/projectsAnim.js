@@ -3,11 +3,13 @@ import anime from "animejs"
 const projectsAnim = () => {
     const projectNumbers = document.querySelector('.projects-sidebar-numbers')
     const projectLetters = document.querySelector('.projects-sidebar-letters')
+    const projectEntries = document.querySelector('.projects-entries')
     const projectSvg = document.querySelector('.projects-sidebar-svg')
     const lineAnimSvg = document.querySelector('.projects-line-svg-anim')
 
     projectSvg.style.visibility = 'visible'
     lineAnimSvg.style.visibility = 'visible'
+    projectEntries.style.visibility = 'visible'
 
     const projectNumberTargets = []
     const projectLetterTargets = []
@@ -94,6 +96,15 @@ const projectsAnim = () => {
         duration: 1000,
         easing: 'easeInOutQuint'
     }, 4500)
+
+    // Animate project entries
+    tl.add({
+        targets: '.projects-entries .project-entry',
+        translateX: ["+=-50vw", 0],
+        duration: 1000,
+        easing: 'easeOutCirc',
+        delay: anime.stagger(250)
+    }, 5250)
 
 }
 
