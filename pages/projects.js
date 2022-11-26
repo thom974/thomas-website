@@ -1,26 +1,27 @@
 import { Stack, Typography } from "@mui/material"
 import { styled } from "@mui/system"
+import { useEffect } from "react"
 
 // Custom styled components for projects list.
 const PList = styled('ol')({
     listStyleType: 'none',
     position: 'relative',
     color: '#A7BC5B',
-    fontSize: 60,
+    fontSize: 50,
     fontFamily: [
         'Archivo', 
         'sans-serif'
     ].join(','),
     fontWeight: '600',
-    letterSpacing: '0.08em',
+    letterSpacing: '0.06em',
     paddingLeft: '0',
     counterReset: 'my-counter'
 })
 
 const PItem = styled('li')({
     position: 'relative',
-    paddingTop: '15%',
-    paddingBottom: '15%',
+    paddingTop: '10%',
+    paddingBottom: '10%',
     '&::before': {
         fontWeight: '400',
         fontSize: '16px',
@@ -44,13 +45,35 @@ const PItemContent = styled('a')({
     position: 'relative',
     transition: '0.3s',
     '&:hover': {
-        '-webkit-text-fill-color' : 'transparent',
-        '-webkit-text-stroke': '0.05px #56642A',
+        'WebkitTextFillColor' : 'transparent',
+        'WebkitTextStroke': '#56642A',
+        'WebkitTextStrokeWidth' : '0.01px',
         transform: 'translateX(20%)'
     }
 })
 
 const Projects = () => {
+    useEffect(() => {
+        document.querySelectorAll('.project-entry-box').forEach(entry => {
+            entry.addEventListener('mouseover', event => {
+                const overlay = document.querySelector('.project-preview-overlay')
+                overlay.style.transition = '0.4s'
+                overlay.style.transform = 'translateX(100%)'
+            })
+            
+            entry.addEventListener('mouseout', event => {
+                const overlay = document.querySelector('.project-preview-overlay')
+                overlay.style.transition = '0.3s'
+                overlay.style.transform = 'translateX(0)'
+            })
+        })
+
+        const overlay = document.querySelector('.project-preview-overlay')
+        overlay.addEventListener('webkitTransitionEnd', event => {
+            console.log(event)
+        })
+    })
+
     return (
         <Stack
             width='100%'
@@ -115,8 +138,9 @@ const Projects = () => {
                 height='100%'
                 direction='row'
                 justifyContent='flex-start'
-                spacing='20%'
+                spacing='15%'
             >
+                {/* Project listing stack */}
                 <Stack
                     width='40%'
                     height='100%'
@@ -128,20 +152,30 @@ const Projects = () => {
                         className='projects-entries'
                         visibility='hidden'
                     >
-                        <PItem className='project-entry'><PItemContent>Project #1</PItemContent></PItem>
-                        <PItem className='project-entry'><PItemContent>Project #2</PItemContent></PItem>
-                        <PItem className='project-entry'><PItemContent>Project #3</PItemContent></PItem>
-                        <PItem className='project-entry'><PItemContent>Project #4</PItemContent></PItem>
+                        <PItem className='project-entry' id='01'><PItemContent className='project-entry-box'>The Green Reaper</PItemContent></PItem>
+                        <PItem className='project-entry' id='02'><PItemContent className='project-entry-box'>Room Designer Bot</PItemContent></PItem>
+                        <PItem className='project-entry' id='03'><PItemContent className='project-entry-box'>Hackathon Website</PItemContent></PItem>
+                        <PItem className='project-entry' id='04'><PItemContent className='project-entry-box'>osu! Beatmap Gen</PItemContent></PItem>
                     </PList>
                 </Stack>
 
+                {/* Project preview stack */}
+                {/* Will hold video */}
                 <Stack
-                    width='40%'
+                    width='45%'
                     height='100%'
                     direction='column'
                     justifyContent='center'
                 >
-                    
+                    <Stack
+                        visibility='hidden'
+                        className='project-preview-overlay'
+                        width='100%'
+                        height='75%'
+                        backgroundColor='#A7BC5B'
+                    >
+
+                    </Stack>
                 </Stack>
             </Stack>
         </Stack>

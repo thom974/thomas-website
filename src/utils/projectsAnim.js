@@ -106,6 +106,21 @@ const projectsAnim = () => {
         delay: anime.stagger(250)
     }, 5250)
 
+    // Animate projects preview overlay
+    tl.add({
+        targets: '.project-preview-overlay',
+        translateX: ["+=50vw", 0],
+        duration: 1000, 
+        easing: 'easeInOutQuint',
+        begin: (anim) => {
+            const overlay = document.querySelector('.project-preview-overlay')
+            overlay.style.visibility = 'visible'
+        },
+        complete: (anim) => {
+            const overlay = document.querySelector('.project-preview-overlay')
+            overlay.style.transition = '0.3s'
+        }
+    }, 5750)
 }
 
 export default projectsAnim
