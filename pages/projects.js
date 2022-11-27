@@ -52,6 +52,17 @@ const PItemContent = styled('a')({
     }
 })
 
+const PItemDesc = styled('a')({
+    position: 'relative',
+    color: '#56642A',
+    fontSize: 30,
+    fontFamily: [
+        'Montserrat', 
+        'sans-serif'
+      ].join(','),
+    fontWeight: '600',
+})
+
 const Projects = () => {
     useEffect(() => {
         document.querySelectorAll('.project-entry-box').forEach(entry => {
@@ -59,6 +70,7 @@ const Projects = () => {
                 const overlay = document.querySelector('.project-preview-overlay')
                 overlay.style.transition = '0.4s'
                 overlay.style.transform = 'translateX(100%)'
+                overlay.currentProject = event.fromElement.id
             })
             
             entry.addEventListener('mouseout', event => {
@@ -70,7 +82,24 @@ const Projects = () => {
 
         const overlay = document.querySelector('.project-preview-overlay')
         overlay.addEventListener('webkitTransitionEnd', event => {
-            console.log(event)
+            // User hovering over project entry
+            if (event.elapsedTime == 0.4) {
+                // Handle content display for each project
+                const id = overlay.currentProject
+
+                if (id == "01") {
+                    overlay.style.backgroundColor = "#FF0000"
+                } else if (id == "02") {
+                    overlay.style.backgroundColor = "#00FF00"
+                } else if (id == "03") {
+                    overlay.style.backgroundColor = "#0000FF"
+                } else {
+                    overlay.style.backgroundColor = "#000000"
+                }
+                
+                // Move overlay back in after changing contents
+                overlay.style.transform = 'translateX(0)'
+            }
         })
     })
 
@@ -152,10 +181,20 @@ const Projects = () => {
                         className='projects-entries'
                         visibility='hidden'
                     >
-                        <PItem className='project-entry' id='01'><PItemContent className='project-entry-box'>The Green Reaper</PItemContent></PItem>
-                        <PItem className='project-entry' id='02'><PItemContent className='project-entry-box'>Room Designer Bot</PItemContent></PItem>
-                        <PItem className='project-entry' id='03'><PItemContent className='project-entry-box'>Hackathon Website</PItemContent></PItem>
-                        <PItem className='project-entry' id='04'><PItemContent className='project-entry-box'>osu! Beatmap Gen</PItemContent></PItem>
+                        <PItem className='project-entry' id='01'>
+                            <PItemContent className='project-entry-box'>The Green Reaper</PItemContent>
+                            <br></br>
+                            <PItemDesc>Python, Pygame</PItemDesc> 
+                        </PItem>
+                        <PItem className='project-entry' id='02'>
+                            <PItemContent className='project-entry-box'>Room Designer Bot</PItemContent>
+                        </PItem>
+                        <PItem className='project-entry' id='03'>
+                            <PItemContent className='project-entry-box'>Hackathon Website</PItemContent>
+                        </PItem>
+                        <PItem className='project-entry' id='04'>
+                            <PItemContent className='project-entry-box'>osu! Beatmap Gen</PItemContent>
+                        </PItem>
                     </PList>
                 </Stack>
 

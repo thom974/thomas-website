@@ -118,7 +118,6 @@ const projectsAnim = () => {
         },
         complete: (anim) => {
             const overlay = document.querySelector('.project-preview-overlay')
-            overlay.style.transition = '0.3s'
         }
     }, 5750)
 }
