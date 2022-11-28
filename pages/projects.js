@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material"
 import { styled } from "@mui/system"
 import { useEffect } from "react"
+import anime from "animejs"
 
 // Custom styled components for projects list.
 const PList = styled('ol')({
@@ -35,7 +36,7 @@ const PItem = styled('li')({
         position: 'absolute',
         transformOrigin: '100% 100%',
         transform: 'translateY(-50%) rotate(-90deg)',
-        top: '35%',
+        top: '27%',
         right: 'calc(100% + 25px)',
     },
 })
@@ -53,9 +54,10 @@ const PItemContent = styled('a')({
 })
 
 const PItemDesc = styled('a')({
+    display: 'inline-block',
     position: 'relative',
     color: '#56642A',
-    fontSize: 30,
+    fontSize: 20,
     fontFamily: [
         'Montserrat', 
         'sans-serif'
@@ -65,6 +67,7 @@ const PItemDesc = styled('a')({
 
 const Projects = () => {
     useEffect(() => {
+        // Add event listeners to project entries
         document.querySelectorAll('.project-entry-box').forEach(entry => {
             entry.addEventListener('mouseover', event => {
                 const overlay = document.querySelector('.project-preview-overlay')
@@ -80,6 +83,7 @@ const Projects = () => {
             })
         })
 
+        // Add event listeners to project overlay
         const overlay = document.querySelector('.project-preview-overlay')
         overlay.addEventListener('webkitTransitionEnd', event => {
             // User hovering over project entry
@@ -88,18 +92,79 @@ const Projects = () => {
                 const id = overlay.currentProject
 
                 if (id == "01") {
+                    const desc = document.querySelector('.project-entry-desc#desc1')
+
+                    if (desc.style.visibility == 'hidden') {
+                        anime({
+                            targets: desc,
+                            translateX: ["+=-50vw", 0],
+                            easing: 'easeOutExpo',
+                            duration: 500,
+                            begin: (anim) => {
+                                desc.style.transition = 0
+                                desc.style.visibility = 'visible'
+                            }
+                        })
+                    }
                     overlay.style.backgroundColor = "#FF0000"
                 } else if (id == "02") {
+                    const desc = document.querySelector('.project-entry-desc#desc2')
+
+                    if (desc.style.visibility == 'hidden') {
+                        anime({
+                            targets: desc,
+                            translateX: ["+=-50vw", 0],
+                            easing: 'easeOutExpo',
+                            duration: 500,
+                            begin: (anim) => {
+                                desc.style.transition = 0
+                                desc.style.visibility = 'visible'
+                            }
+                        })
+                    }
                     overlay.style.backgroundColor = "#00FF00"
                 } else if (id == "03") {
+                    const desc = document.querySelector('.project-entry-desc#desc3')
+                    
+                    if (desc.style.visibility == 'hidden') {
+                        anime({
+                            targets: desc,
+                            translateX: ["+=-50vw", 0],
+                            easing: 'easeOutExpo',
+                            duration: 500,
+                            begin: (anim) => {
+                                desc.style.transition = 0
+                                desc.style.visibility = 'visible'
+                            }
+                        })
+                    }
                     overlay.style.backgroundColor = "#0000FF"
                 } else {
+                    const desc = document.querySelector('.project-entry-desc#desc4')
+                    
+                    if (desc.style.visibility == 'hidden') {
+                        anime({
+                            targets: desc,
+                            translateX: ["+=-50vw", 0],
+                            easing: 'easeOutExpo',
+                            duration: 500,
+                            begin: (anim) => {
+                                desc.style.transition = 0
+                                desc.style.visibility = 'visible'
+                            }
+                        })
+                    }
                     overlay.style.backgroundColor = "#000000"
                 }
                 
                 // Move overlay back in after changing contents
                 overlay.style.transform = 'translateX(0)'
             }
+        })
+
+        // Add animations to project entry descriptions and modify them
+        document.querySelectorAll('.project-entry-desc').forEach(entry => {
+            entry.style.visibility = 'hidden'
         })
     })
 
@@ -184,16 +249,22 @@ const Projects = () => {
                         <PItem className='project-entry' id='01'>
                             <PItemContent className='project-entry-box'>The Green Reaper</PItemContent>
                             <br></br>
-                            <PItemDesc>Python, Pygame</PItemDesc> 
+                            <PItemDesc className='project-entry-desc' id="desc1">Python, Pygame</PItemDesc> 
                         </PItem>
                         <PItem className='project-entry' id='02'>
                             <PItemContent className='project-entry-box'>Room Designer Bot</PItemContent>
+                            <br></br>
+                            <PItemDesc className='project-entry-desc' id="desc2">Three.js, Express.js, PostgreSQL, Blender </PItemDesc>
                         </PItem>
                         <PItem className='project-entry' id='03'>
                             <PItemContent className='project-entry-box'>Hackathon Website</PItemContent>
+                            <br></br>
+                            <PItemDesc className='project-entry-desc' id="desc3">React.js, Three.js, GSAP, Blender</PItemDesc>
                         </PItem>
                         <PItem className='project-entry' id='04'>
                             <PItemContent className='project-entry-box'>osu! Beatmap Gen</PItemContent>
+                            <br></br>
+                            <PItemDesc className='project-entry-desc' id="desc4">Python, Pygame, Selenium</PItemDesc>
                         </PItem>
                     </PList>
                 </Stack>
