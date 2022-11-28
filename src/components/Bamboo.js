@@ -26,7 +26,6 @@ const Bamboo = () => {
         const clock = new Clock(false)
 
         window.addEventListener('bamboo', ()=> {
-            console.log('bamboo event heard!')
             clock.start()
         })
 
