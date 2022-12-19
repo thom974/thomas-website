@@ -65,6 +65,43 @@ const PItemDesc = styled('a')({
     fontWeight: '600',
 })
 
+const Image = styled('img')({
+    position: 'relative',
+    borderRadius: '20px',
+    borderColor: '#A6BB5A',
+    borderWidth: '10px',
+    borderStyle: 'solid',
+    width: '100%',
+    height: '80%',
+})
+
+const ImageDesc = styled('a')({
+    display: 'inline-block',
+    position: 'relative',
+    color: '#000000',
+    fontSize: 22,
+    fontFamily: [
+        'Montserrat', 
+        'sans-serif'
+      ].join(','),
+    fontWeight: '600',
+    '&::before': {
+        fontWeight: '400',
+        fontSize: '22px',
+        fontFamily: [
+            'Archivo', 
+            'sans-serif'
+        ].join(','),
+        content: '"xx"',
+        color: '#A6BB5A',
+        position: 'absolute',
+        transformOrigin: '100% 100%',
+        transform: 'translateY(-50%) rotate(-90deg)',
+        top:'-25%',
+        right: 'calc(100% + 25px)',
+    },
+})
+
 const Projects = () => {
     useEffect(() => {
         // Add event listeners to project entries
@@ -79,7 +116,7 @@ const Projects = () => {
             entry.addEventListener('mouseout', event => {
                 const overlay = document.querySelector('.project-preview-overlay')
                 overlay.style.transition = '0.3s'
-                overlay.style.transform = 'translateX(0)'
+                overlay.style.transform = 'translateX(15%)'
             })
         })
 
@@ -93,6 +130,10 @@ const Projects = () => {
 
                 if (id == "01") {
                     const desc = document.querySelector('.project-entry-desc#desc1')
+                    const previewImage = document.querySelector('.project-preview-image')
+                    const previewDescOne = document.querySelector('.project-preview-desc-1')
+                    const previewDescTwo = document.querySelector('.project-preview-desc-2')
+                    const previewDescThree = document.querySelector('.project-preview-desc-3')
 
                     if (desc.style.visibility == 'hidden') {
                         anime({
@@ -101,12 +142,19 @@ const Projects = () => {
                             easing: 'easeOutExpo',
                             duration: 500,
                             begin: (anim) => {
+                                previewImage.style.visibility = 'visible'
+                                previewDescOne.style.visibility = 'visible'
+                                previewDescTwo.style.visibility = 'hidden'
+                                previewDescThree.style.visibility = 'hidden'
+
                                 desc.style.transition = 0
                                 desc.style.visibility = 'visible'
+                                overlay.style.backgroundColor = 'transparent'
+                                previewImage.src = '/projects/greenreaper.png'
+                                previewDescOne.innerHTML = "an environmentally friendly game featuring a spell-casting grim reaper"
                             }
                         })
                     }
-                    overlay.style.backgroundColor = "#FF0000"
                 } else if (id == "02") {
                     const desc = document.querySelector('.project-entry-desc#desc2')
 
@@ -119,10 +167,10 @@ const Projects = () => {
                             begin: (anim) => {
                                 desc.style.transition = 0
                                 desc.style.visibility = 'visible'
+                                overlay.style.backgroundColor = 'transparent'
                             }
                         })
                     }
-                    overlay.style.backgroundColor = "#00FF00"
                 } else if (id == "03") {
                     const desc = document.querySelector('.project-entry-desc#desc3')
                     
@@ -135,10 +183,10 @@ const Projects = () => {
                             begin: (anim) => {
                                 desc.style.transition = 0
                                 desc.style.visibility = 'visible'
+                                overlay.style.backgroundColor = 'transparent'
                             }
                         })
                     }
-                    overlay.style.backgroundColor = "#0000FF"
                 } else {
                     const desc = document.querySelector('.project-entry-desc#desc4')
                     
@@ -151,14 +199,14 @@ const Projects = () => {
                             begin: (anim) => {
                                 desc.style.transition = 0
                                 desc.style.visibility = 'visible'
+                                overlay.style.backgroundColor = 'transparent'
                             }
                         })
                     }
-                    overlay.style.backgroundColor = "#000000"
                 }
                 
                 // Move overlay back in after changing contents
-                overlay.style.transform = 'translateX(0)'
+                overlay.style.transform = 'translateX(5%)'
             }
         })
 
@@ -166,6 +214,12 @@ const Projects = () => {
         document.querySelectorAll('.project-entry-desc').forEach(entry => {
             entry.style.visibility = 'hidden'
         })
+
+        // Hide project preview image + description
+        document.querySelector('.project-preview-image').style.visibility = 'hidden'
+        document.querySelector('.project-preview-desc-1').style.visibility = 'hidden'
+        document.querySelector('.project-preview-desc-2').style.visibility = 'hidden'
+        document.querySelector('.project-preview-desc-3').style.visibility = 'hidden'
     })
 
     return (
@@ -232,7 +286,7 @@ const Projects = () => {
                 height='100%'
                 direction='row'
                 justifyContent='flex-start'
-                spacing='15%'
+                spacing='10%'
             >
                 {/* Project listing stack */}
                 <Stack
@@ -272,7 +326,7 @@ const Projects = () => {
                 {/* Project preview stack */}
                 {/* Will hold video */}
                 <Stack
-                    width='45%'
+                    width='50%'
                     height='100%'
                     direction='column'
                     justifyContent='center'
@@ -283,8 +337,14 @@ const Projects = () => {
                         width='100%'
                         height='75%'
                         backgroundColor='#A7BC5B'
+                        direction='column'
+                        justifyContent='flex-start'
+                        spacing='5%'
                     >
-
+                        <Image className='project-preview-image'/>
+                        <ImageDesc className='project-preview-desc-1'>an environmentally friendly game featuring a spell-casting grim reaper</ImageDesc>
+                        <ImageDesc className='project-preview-desc-2'>an environmentally friendly game featuring a spell-casting grim reaper</ImageDesc>
+                        <ImageDesc className='project-preview-desc-3'>an environmentally friendly game featuring a spell-casting grim reaper</ImageDesc>
                     </Stack>
                 </Stack>
             </Stack>
