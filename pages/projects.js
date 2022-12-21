@@ -67,6 +67,7 @@ const PItemDesc = styled('a')({
 
 const Image = styled('img')({
     position: 'relative',
+    objectFit: 'cover',
     borderRadius: '20px',
     borderColor: '#A6BB5A',
     borderWidth: '10px',
@@ -127,14 +128,17 @@ const Projects = () => {
             if (event.elapsedTime == 0.4) {
                 // Handle content display for each project
                 const id = overlay.currentProject
+                const previewImageOne = document.querySelector('.project-preview-image-1')
+                const previewImageTwo = document.querySelector('.project-preview-image-2')
+                const previewImageThree = document.querySelector('.project-preview-image-3')
+                const previewImageFour = document.querySelector('.project-preview-image-4')
+                const previewDescOne = document.querySelector('.project-preview-desc-1')
+                const previewDescTwo = document.querySelector('.project-preview-desc-2')
+                const previewDescThree = document.querySelector('.project-preview-desc-3')
 
                 if (id == "01") {
                     const desc = document.querySelector('.project-entry-desc#desc1')
-                    const previewImage = document.querySelector('.project-preview-image')
-                    const previewDescOne = document.querySelector('.project-preview-desc-1')
-                    const previewDescTwo = document.querySelector('.project-preview-desc-2')
-                    const previewDescThree = document.querySelector('.project-preview-desc-3')
-
+                    
                     if (desc.style.visibility == 'hidden') {
                         anime({
                             targets: desc,
@@ -142,19 +146,25 @@ const Projects = () => {
                             easing: 'easeOutExpo',
                             duration: 500,
                             begin: (anim) => {
-                                previewImage.style.visibility = 'visible'
-                                previewDescOne.style.visibility = 'visible'
-                                previewDescTwo.style.visibility = 'hidden'
-                                previewDescThree.style.visibility = 'hidden'
-
                                 desc.style.transition = 0
                                 desc.style.visibility = 'visible'
-                                overlay.style.backgroundColor = 'transparent'
-                                previewImage.src = '/projects/greenreaper.png'
-                                previewDescOne.innerHTML = "an environmentally friendly game featuring a spell-casting grim reaper"
+                                overlay.style.backgroundColor = 'transparent'                                
                             }
                         })
                     }
+
+                    previewImageOne.style.display = 'inline'
+                    previewImageTwo.style.display = 'none'
+                    previewImageThree.style.display = 'none'
+                    previewImageFour.style.display = 'none'
+                    previewDescOne.style.visibility = 'visible'
+                    previewDescTwo.style.visibility = 'visible'
+                    previewDescThree.style.visibility = 'visible'
+
+                    previewDescOne.innerHTML = "an environmentally friendly game featuring a spell-casting grim reaper"
+                    previewDescTwo.innerHTML = "art and animations all made from scratch,  custom level loading system"
+                    previewDescThree.href = "https://github.com/thom974/the-green-reaper"
+                    previewDescThree.innerHTML = "github source"
                 } else if (id == "02") {
                     const desc = document.querySelector('.project-entry-desc#desc2')
 
@@ -171,6 +181,19 @@ const Projects = () => {
                             }
                         })
                     }
+
+                    previewImageOne.style.display = 'none'
+                    previewImageTwo.style.display = 'inline'
+                    previewImageThree.style.display = 'none'
+                    previewImageFour.style.display = 'none'
+                    previewDescOne.style.visibility = 'visible'
+                    previewDescTwo.style.visibility = 'visible'
+                    previewDescThree.style.visibility = 'visible'
+
+                    previewDescOne.innerHTML = "discord bot for room designing! work a job, browse the market and 3D render your room!"
+                    previewDescTwo.innerHTML = "Three.js for 3D rendering, handled by an external Express.js server, hand-crafted Blender models, PostgreSQL database."
+                    previewDescThree.href = "https://github.com/thom974/room-setup-bot"
+                    previewDescThree.innerHTML = "github source"
                 } else if (id == "03") {
                     const desc = document.querySelector('.project-entry-desc#desc3')
                     
@@ -187,6 +210,19 @@ const Projects = () => {
                             }
                         })
                     }
+
+                    previewImageOne.style.display = 'none'
+                    previewImageTwo.style.display = 'none'
+                    previewImageThree.style.display = 'inline'
+                    previewImageFour.style.display = 'none'
+                    previewDescOne.style.visibility = 'visible'
+                    previewDescTwo.style.visibility = 'visible'
+                    previewDescThree.style.visibility = 'visible'
+                    
+                    previewDescOne.innerHTML = 'real-time physics based rendering with Three.js, models made from scratch in Blender'
+                    previewDescTwo.innerHTML = 'keyframed animations with GSAP, leveraged React component library Chakra UI'
+                    previewDescThree.href = 'https://github.com/thom974/htr-website'
+                    previewDescThree.innerHTML = 'github source'
                 } else {
                     const desc = document.querySelector('.project-entry-desc#desc4')
                     
@@ -203,6 +239,19 @@ const Projects = () => {
                             }
                         })
                     }
+
+                    previewImageOne.style.display = 'none'
+                    previewImageTwo.style.display = 'none'
+                    previewImageThree.style.display = 'none'
+                    previewImageFour.style.display = 'inline'
+                    previewDescOne.style.visibility = 'visible'
+                    previewDescTwo.style.visibility = 'visible'
+                    previewDescThree.style.visibility = 'visible'
+                    
+                    previewDescOne.innerHTML = 'tool to search for and automatically install beatmaps for the game osu!.'
+                    previewDescTwo.innerHTML = 'requires users to verify using OAuth 2.0 and uses WebDriver to simulate browser interactions.'
+                    previewDescThree.href = 'https://github.com/thom974/osu--beatmap-gen-v3'
+                    previewDescThree.innerHTML = 'github source'
                 }
                 
                 // Move overlay back in after changing contents
@@ -216,7 +265,10 @@ const Projects = () => {
         })
 
         // Hide project preview image + description
-        document.querySelector('.project-preview-image').style.visibility = 'hidden'
+        document.querySelector('.project-preview-image-1').style.display = 'none'
+        document.querySelector('.project-preview-image-2').style.display = 'none'
+        document.querySelector('.project-preview-image-3').style.display = 'none'
+        document.querySelector('.project-preview-image-4').style.display = 'none'
         document.querySelector('.project-preview-desc-1').style.visibility = 'hidden'
         document.querySelector('.project-preview-desc-2').style.visibility = 'hidden'
         document.querySelector('.project-preview-desc-3').style.visibility = 'hidden'
@@ -339,12 +391,32 @@ const Projects = () => {
                         backgroundColor='#A7BC5B'
                         direction='column'
                         justifyContent='flex-start'
-                        spacing='5%'
                     >
-                        <Image className='project-preview-image'/>
-                        <ImageDesc className='project-preview-desc-1'>an environmentally friendly game featuring a spell-casting grim reaper</ImageDesc>
-                        <ImageDesc className='project-preview-desc-2'>an environmentally friendly game featuring a spell-casting grim reaper</ImageDesc>
-                        <ImageDesc className='project-preview-desc-3'>an environmentally friendly game featuring a spell-casting grim reaper</ImageDesc>
+                        <Image className='project-preview-image-1' src='/projects/greenreaper.png'/>
+                        <Image className='project-preview-image-2' src='/projects/roomsetup.png'/>
+                        <Image className='project-preview-image-3' src='/projects/hacktheridge.png'/>
+                        <Image className='project-preview-image-4' src= '/projects/osugen.png'/>
+                        <Stack
+                            className='project-preview-descs'
+                            width='100%'
+                            height='20%'
+                            direction='column'
+                            justifyContent='flex-start'
+                            spacing='2%'
+                            paddingTop='5%'
+                        >
+                            <ImageDesc className='project-preview-desc-1' />
+                            <ImageDesc className='project-preview-desc-2' />
+                            <ImageDesc 
+                                className='project-preview-desc-3'
+                                target='_blank'
+                                sx={{
+                                    '&:hover' : {
+                                        textDecoration: 'underline'
+                                    },
+                                }}
+                            />
+                        </Stack>
                     </Stack>
                 </Stack>
             </Stack>
