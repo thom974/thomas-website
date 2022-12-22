@@ -83,7 +83,7 @@ export default function Home() {
 
   useEffect(() => {
     const div = document.querySelector('#__next')
-
+    
     div.addEventListener('scroll' , () => {
       /**
        * CHECK IF SECTIONS ARE VISIBLE, THEN PLAY ANIMATION
@@ -97,16 +97,19 @@ export default function Home() {
 
       if (aboutStackRect.top <= window.innerHeight * 0.5 && aboutActive) {
         aboutAnim()
+        window.dispatchEvent(new Event('navbar-2'))
         aboutActive = false
       }
 
       if (projectsStackRect.top <= window.innerHeight * 0.5 && projectsActive) {
         projectsAnim()
+        window.dispatchEvent(new Event('navbar-3'))
         projectsActive = false
       }
     })
 
     mainAnim()
+    window.dispatchEvent(new Event('navbar-1'))
   })
 
   return ( 
