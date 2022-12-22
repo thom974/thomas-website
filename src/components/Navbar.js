@@ -1,104 +1,118 @@
 import Stack from "@mui/material/Stack"
 
 import { useEffect } from 'react'
-
-import { 
-    Typography 
-} from "@mui/material"
+import { styled } from "@mui/system"
+import { Typography } from "@mui/material"
 
 import anime from "animejs"
 
-const Navbar = () => {
+const Redirect = styled('a')({
+    transition: '0.3s',
+    '&:hover': {
+        color: '#56642A',
+        fontSize: 35
+    }
+})
+
+const Navbar = ({ num, delay }) => {
     useEffect(() => {
-        document.querySelector('.nav-home').style.visibility = 'visible'
-        document.querySelector('.nav-projects').style.visibility = 'visible'
-        document.querySelector('.nav-spacing-left').style.visibility = 'visible'
-        document.querySelector('.nav-spacing-right').style.visibility = 'visible'
+        document.querySelector(`.nav-home-${num}`).style.visibility = 'visible'
+        document.querySelector(`.nav-projects-${num}`).style.visibility = 'visible'
+        document.querySelector(`.nav-spacing-left-${num}`).style.visibility = 'visible'
+        document.querySelector(`.nav-spacing-right-${num}`).style.visibility = 'visible'
+        
+        const tl = anime.timeline({})
+        tl.autoplay = false
+        
+        // Listen for event emitted
+        window.addEventListener(`navbar-${num}`, () => {
+            tl.play()
+        })
 
         // Nav heading translation animations
-        anime({
-            targets: '.nav-home',
+        tl.add({
+            targets: `.nav-home-${num}`,
             translateX: ['+=150%', 0],
             duration: 500,
             easing: 'easeOutBack',
-            delay: 2800
-        })
+            // delay: 2800
+        }, 800 + delay)
 
-        anime({
-            targets: '.nav-projects',
+        tl.add({
+            targets: `.nav-projects-${num}`,
             translateX: ['+=-150%', 0],
             duration: 500,
             easing: 'easeOutBack',
-            delay: 2800
-        })
+            // delay: 2800
+        }, 800 + delay)
 
         // Spacer translation animations
-        anime({
-            targets: '.nav-spacing-left',
+        tl.add({
+            targets: `.nav-spacing-left-${num}`,
             translateX: ['+=1250%', 0],
             duration: 1000,
             easing: 'easeInQuint',
-            delay: 2000
-        })
+            // delay: 2000
+        }, 0 + delay)
 
-        anime({
-            targets: '.nav-spacing-right',
+        tl.add({
+            targets: `.nav-spacing-right-${num}`,
             translateX: ['+=-1250%', 0],
             duration: 1000,
             easing: 'easeInQuint',
-            delay: 2000
-        })
+            // delay: 2000
+        }, 0 + delay)
 
         // Opacity animations
-        anime({
-            targets: '.nav-about',
+        tl.add({
+            targets: `.nav-about-${num}`,
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 2700
-        })
+            // delay: 2700
+        }, 700 + delay)
 
-        anime({
-            targets: '.nav-home',
+        tl.add({
+            targets: `.nav-home-${num}`,
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 2300
-        })
+            // delay: 2300
+        }, 300 + delay)
 
-        anime({
-            targets: '.nav-projects',
+        tl.add({
+            targets: `.nav-projects-${num}`,
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 2400
-        })
+            // delay: 2400
+        }, 400 + delay)
 
-        anime({
-            targets: '.nav-spacing-left',
+        tl.add({
+            targets: `.nav-spacing-left-${num}`,
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 2200
-        })
+            // delay: 2200
+        }, 200 + delay)
 
-        anime({
-            targets: '.nav-spacing-right',
+        tl.add({
+            targets: `.nav-spacing-right-${num}`,
             opacity: [0, 1],
             duration: 500,
             easing: 'easeInQuint',
-            delay: 2200
-        })
+            // delay: 2200
+        }, 200 + delay)
     })
 
     return (
-        <Stack justifyContent="center" alignItems="center">
+        <Stack className={`.navbar-${num}`} justifyContent="center" alignItems="center" width='100%' height='10%'>
             <Stack direction="row" spacing={50}>
-                <Typography className='nav-home' variant="navbar_main" visibility='hidden'>home</Typography>
-                <Typography className='nav-spacing-left' variant="navbar_alt" visibility='hidden'>/</Typography>
-                <Typography className='nav-about' variant="navbar_main">about me</Typography>
-                <Typography className= 'nav-spacing-right' variant="navbar_alt" visibility='hidden'>/</Typography>
-                <Typography className='nav-projects' variant="navbar_main" visibility='hidden'>projects</Typography>
+                <Typography className={`nav-home-${num}`} variant="navbar_main" visibility='hidden'><Redirect href='#home'>home</Redirect></Typography>
+                <Typography className={`nav-spacing-left-${num}`} variant="navbar_alt" visibility='hidden'>/</Typography>
+                <Typography className={`nav-about-${num}`} variant="navbar_main"><Redirect href='#aboutme'>about me</Redirect></Typography>
+                <Typography className= {`nav-spacing-right-${num}`} variant="navbar_alt" visibility='hidden'>/</Typography>
+                <Typography className={`nav-projects-${num}`} variant="navbar_main" visibility='hidden'><Redirect href='#projects'>projects</Redirect></Typography>
             </Stack>
         </Stack>
     )
