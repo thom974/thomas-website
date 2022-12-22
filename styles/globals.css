@@ -17,6 +17,7 @@ div#__next {
   height: 100%;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 a {
