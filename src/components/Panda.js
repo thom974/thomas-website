@@ -32,6 +32,9 @@ const Panda = () => {
         canvas.style.opacity = 0
         const scene = new Scene()
 
+        // Style canvas
+        canvas.style.cursor = 'pointer'
+
         // Setup clock
         const clock = new Clock(false)
         
@@ -114,6 +117,13 @@ const Panda = () => {
                 scene.children[3].children[0].rotation.z += 0.5 / (10 * clock.getElapsedTime() + 0.5) 
             }
         }
+
+        // Adding event listener for canvas
+        canvas.addEventListener('click', () => {
+            clock.stop()
+            clock.start()
+        })
+        
 
         // Animate opacity of canvas
         anime({

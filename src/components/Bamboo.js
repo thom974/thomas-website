@@ -22,10 +22,18 @@ const Bamboo = () => {
         canvas.style.opacity = 0
         const scene = new Scene()
 
+        // Style canvas
+        canvas.style.cursor = 'pointer'
+
         // Setting up clock and event emitter
         const clock = new Clock(false)
 
         window.addEventListener('bamboo', ()=> {
+            clock.start()
+        })
+
+        canvas.addEventListener('click', () => {
+            clock.stop()
             clock.start()
         })
 
