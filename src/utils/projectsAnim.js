@@ -106,7 +106,7 @@ const projectsAnim = () => {
         delay: anime.stagger(250)
     }, 5250)
 
-    // Animate projects preview overlay
+// Animate projects preview overlay
     tl.add({
         targets: '.project-preview-overlay',
         translateX: ["+=50vw", 0],

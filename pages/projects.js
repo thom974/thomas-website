@@ -269,6 +269,9 @@ const Projects = () => {
             entry.style.visibility = 'hidden'
         })
 
+        // Initially hide projects list
+        document.querySelector('.projects-entries').style.visibility = 'hidden'
+
         // Hide project preview image + description
         document.querySelector('.project-preview-image-1').style.display = 'none'
         document.querySelector('.project-preview-image-2').style.display = 'none'
@@ -367,7 +370,6 @@ const Projects = () => {
                     >
                         <PList 
                             className='projects-entries'
-                            visibility='hidden'
                         >
                             <PItem className='project-entry' id='01'>
                                 <PItemContent className='project-entry-box'>The Green Reaper</PItemContent>

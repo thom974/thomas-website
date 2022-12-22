@@ -97,12 +97,12 @@ const About = () => {
                             justifyContent='flex-start'
                             alignItems='flex-start'
                             pt='10%'
-                            spacing='15%'
+                            spacing='10%'
                         >
                             <Stack
                                 className='about-text-entry'
                                 width='100%'
-                                height='10%'
+                                height='15%'
                                 sx={{
                                     position: 'relative',
                                     zIndex: -1
@@ -114,7 +114,7 @@ const About = () => {
                             <Stack
                                 className='about-text-entry'
                                 width='100%'
-                                height='10%'
+                                height='15%'
                                 sx={{
                                     position: 'relative',
                                     zIndex: -1
@@ -126,7 +126,7 @@ const About = () => {
                             <Stack
                                 className='about-text-entry'
                                 width='100%'
-                                height='10%'
+                                height='15%'
                                 sx={{
                                     position: 'relative',
                                     zIndex: -1
