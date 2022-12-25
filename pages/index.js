@@ -22,6 +22,15 @@ import EventEmitter from '../src/utils/EventEmitter'
 export default function Home() {
   const theme = createTheme({
     spacing: 1,
+    breakpoints: {
+      values: {
+        xxl: 1920,
+        xl: 1600,
+        l: 1400,
+        m: 1100,
+        xxs: 0
+      }
+    },
     typography: {
       navbar_main: {
         color: '#000000',

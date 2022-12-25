@@ -139,7 +139,7 @@ const Panda = () => {
     })    
 
     return (
-        <canvas className='panda-webgl' visibility='hidden'/>
+        <canvas className='panda-webgl' visibility='hidden' width='inherit' height='45%'/>
     )
 }
 

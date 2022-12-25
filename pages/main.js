@@ -131,8 +131,10 @@ const Main = () => {
                 <Stack
                     className='logo-bar'
                     direction='column'
-                    width='25%'
-                    height='inherit'
+                    sx={{
+                        width: { m: '25%', xxs: '18%'}
+                    }}
+                    height='90%'
                     justifyContent='center'
                     alignItems='flex-start'
                     visibility='hidden'
@@ -145,7 +147,6 @@ const Main = () => {
                         className='logo-container'
                         direction='row'
                         width='100%'
-                        height='auto'
                         justifyContent='flex-start'
                         alignItems='center'
                         spacing='6%'
@@ -208,10 +209,14 @@ const Main = () => {
                 </Stack>
 
                 <Stack
+                    className='main-content-stack'
                     direction='column'
-                    spacing={0}
+                    spacing={{ xxl: 25 }}
                     width='50%'
-                    height='inherit'
+                    sx={{
+                        width: { m: '50%', xxs: '57%'}
+                    }}
+                    height='100%'
                 >
                     <Intro />
                     <Panda />
