@@ -20,7 +20,8 @@ const Navbar = ({ num, delay }) => {
         document.querySelector(`.nav-projects-${num}`).style.visibility = 'visible'
         document.querySelector(`.nav-spacing-left-${num}`).style.visibility = 'visible'
         document.querySelector(`.nav-spacing-right-${num}`).style.visibility = 'visible'
-        
+        document.querySelector(`.nav-about-${num}`).style.visibility = 'visible'
+
         const tl = anime.timeline({})
         tl.autoplay = false
         
@@ -110,7 +111,7 @@ const Navbar = ({ num, delay }) => {
             <Stack direction="row" spacing={50}>
                 <Typography className={`nav-home-${num}`} variant="navbar_main" visibility='hidden'><Redirect href='#home'>home</Redirect></Typography>
                 <Typography className={`nav-spacing-left-${num}`} variant="navbar_alt" visibility='hidden'>/</Typography>
-                <Typography className={`nav-about-${num}`} variant="navbar_main"><Redirect href='#aboutme'>about me</Redirect></Typography>
+                <Typography className={`nav-about-${num}`} variant="navbar_main" visibility='hidden'><Redirect href='#aboutme'>about me</Redirect></Typography>
                 <Typography className= {`nav-spacing-right-${num}`} variant="navbar_alt" visibility='hidden'>/</Typography>
                 <Typography className={`nav-projects-${num}`} variant="navbar_main" visibility='hidden'><Redirect href='#projects'>projects</Redirect></Typography>
             </Stack>

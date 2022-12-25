@@ -103,23 +103,37 @@ const projectsAnim = () => {
         translateX: ["+=-50vw", 0],
         duration: 1000,
         easing: 'easeOutCirc',
-        delay: anime.stagger(250)
+        delay: anime.stagger(250),
+        begin: (anim) => {
+            const overlay = document.querySelector('.project-preview-overlay')
+            overlay.style.visibility = 'visible'
+        }
     }, 5250)
 
 // Animate projects preview overlay
     tl.add({
         targets: '.project-preview-overlay',
+        height: '15%',
+        duration: 100,
+    }, 6000)
+
+    tl.add({
+        targets: '.project-preview-overlay',
         translateX: ["+=50vw", 0],
         duration: 1000, 
         easing: 'easeInOutQuint',
-        begin: (anim) => {
-            const overlay = document.querySelector('.project-preview-overlay')
-            overlay.style.visibility = 'visible'
-        },
-        complete: (anim) => {
-            const overlay = document.querySelector('.project-preview-overlay')
-        }
-    }, 5750)
+        // begin: (anim) => {
+        //     const overlay = document.querySelector('.project-preview-overlay')
+        //     overlay.style.visibility = 'visible'
+        // }
+    }, 6500)
+
+    tl.add({
+        targets: '.project-preview-overlay',
+        height: '75%',
+        duration: 1000,
+        easing: 'easeInOutQuint'
+    }, 7250)
 }
 
 export default projectsAnim

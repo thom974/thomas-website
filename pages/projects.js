@@ -116,7 +116,10 @@ const Projects = () => {
                 const overlay = document.querySelector('.project-preview-overlay')
                 overlay.style.transition = '0.4s'
                 overlay.style.transform = 'translateX(100%)'
-                overlay.currentProject = event.fromElement.id
+
+                if (event.fromElement != null) {
+                    overlay.currentProject = event.fromElement.id
+                }
             })
             
             entry.addEventListener('mouseout', event => {

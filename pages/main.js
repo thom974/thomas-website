@@ -33,7 +33,8 @@ const SvgDesc = styled('a')({
         'sans-serif'
     ].join(','),
     fontWeight: '600',
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+    visibility: 'hidden'
 })
 
 const SvgWrapper = styled('div')({
@@ -49,6 +50,8 @@ const SvgLinkWrapper = styled('a')({
 
 const Main = () => {
     useEffect(() => {
+        document.querySelector('.logo-bar').style.visibility = 'visible'
+
         // Add event listeners for logos (fill, show desc)
         const logos = document.querySelectorAll('.logo-container')
         
@@ -56,9 +59,9 @@ const Main = () => {
             const logo = logoContainer.querySelector('.logo')
             const logoWrapper = logoContainer.querySelector('.logo-wrapper')
             
-            logoWrapper.addEventListener('mouseover', event => {
-                // anime.remove(logo)
-                // anime.remove(logoContainer.querySelector('.logo-desc'))
+            logoWrapper.addEventListener('mouseenter', event => {
+                anime.remove(logo)
+                anime.remove(logoContainer.querySelector('.logo-desc'))
                 anime({
                     targets: logo,
                     fill: "#ffffff",
@@ -132,6 +135,7 @@ const Main = () => {
                     height='inherit'
                     justifyContent='center'
                     alignItems='flex-start'
+                    visibility='hidden'
                     spacing={36}
                     pl={53}
                     pr={53}

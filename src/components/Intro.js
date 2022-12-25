@@ -39,12 +39,19 @@ const Intro = () => {
             direction: 'normal'
         })
 
+        let complete = false
+
         // Animate name
         nameTimeline.add({
             targets: nameLetterTargets,
             strokeDashoffset: [anime.setDashoffset, 0],
             easing: 'easeInOutQuint',
             duration: 2500,
+            complete: () => {
+                document.querySelectorAll('.logo-desc').forEach(logoDesc => {
+                    logoDesc.style.visibility = 'visible'
+                })
+            }
         }, 0)
 
         // Animate subheading
@@ -68,7 +75,50 @@ const Intro = () => {
             fill: '#56642A',
             easing: 'easeInQuad',
             duration: 500,
+            complete: () => {
+                complete = true
+            }
         }, 2000)
+
+        // Animate main letters on hover
+        const introName = document.querySelector('.intro-name-svg')
+        introName.addEventListener('mouseenter', () => {
+            if (complete) {
+                anime.remove(nameLetterTargets)
+                anime({
+                    targets: nameLetterTargets,
+                    strokeDashoffset: [0, anime.setDashoffset],
+                    easing: 'easeOutQuint',
+                    duration: 1000,
+                })
+
+                anime({
+                    targets: nameLetterTargets,
+                    fill: '#ffffff',
+                    easing: 'easeOutQuint',
+                    duration: 250,
+                })
+            }
+        })
+
+        introName.addEventListener('mouseleave', () => {
+            if (complete) {
+                anime.remove(nameLetterTargets)
+                anime({
+                    targets: nameLetterTargets,
+                    strokeDashoffset: [anime.setDashoffset, 0],
+                    easing: 'easeOutQuint',
+                    duration: 500
+                })
+
+                anime({
+                    targets: nameLetterTargets,
+                    fill: '#A6BB5A',
+                    easing: 'easeInOutQuint',
+                    duration: 1000,
+                })
+            }
+        })
     })
 
     return (
