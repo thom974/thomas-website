@@ -148,7 +148,7 @@ const Intro = () => {
         >
             <Stack
                 direction='column'
-                spacing={40}
+                spacing={{ xs: 40, xxs: 15 }}
                 alignItems='flex-start'
                 width='100%'
             >
@@ -156,7 +156,7 @@ const Intro = () => {
                     {/* <SvgContainer> */}
                     <Box
                         sx={{
-                            width: { l: 650, m: 550, xxs: 450 },
+                            width: { l: 650, m: 550, sm: 450, xs: 400,  xxs: 300 },
                         }}
                     >
                         <svg 
@@ -185,7 +185,7 @@ const Intro = () => {
                 {/* <Typography variant='subheading'>Hello! I'm a Computer Engineering student studying @ Waterloo!</Typography> */}
                 <Box
                     sx={{
-                        width: { l: 900, m: 700, xxs: 600 },
+                        width: { l: 900, m: 700, sm: 600, xs: 500, xxs: 300 },
                     }}
                 >
                     <svg 

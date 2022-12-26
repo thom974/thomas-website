@@ -13,14 +13,15 @@ import {
   Stack,
   ThemeProvider, 
   Typography,
-  Box
+  Box,
+  responsiveFontSizes
 } from '@mui/material'
 
 import { useEffect, useRef } from 'react'
 import EventEmitter from '../src/utils/EventEmitter'
 
 export default function Home() {
-  const theme = createTheme({
+  let theme = createTheme({
     spacing: 1,
     breakpoints: {
       values: {
@@ -28,6 +29,8 @@ export default function Home() {
         xl: 1600,
         l: 1400,
         m: 1100,
+        sm: 850,
+        xs: 600,
         xxs: 0
       }
     },
@@ -40,7 +43,10 @@ export default function Home() {
           'Montserrat', 
           'sans-serif'
         ].join(','),
-        fontWeight: '600'
+        fontWeight: '600',
+        '@media (max-width:1100px)': {
+          fontSize: 20
+        }
       },
       navbar_alt: {
         color: '#A7BC5B',

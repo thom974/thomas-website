@@ -64,7 +64,7 @@ const Panda = () => {
                 //     targets: scene.children[3].children[0].rotation,
                 //     z: `+=${Math.PI * 2}`,
                 //     duration: 2000,
-                //     delay: 5000
+                //     delay: 4500
                 // })
 
                 tick()
@@ -95,8 +95,16 @@ const Panda = () => {
         
         // Setting up renderer
         const renderer = new WebGLRenderer({ canvas: canvas }) 
+        
+        // Initalize canvas size depending on initial viewport size
+        if (window.innerWidth < 600) {
+            renderer.setSize(250, 250)            
+        } else if (window.innerWidth >= 600 && window.innerWidth < 1100) {
+            renderer.setSize(450, 450)
+        } else {
+            renderer.setSize(600, 600)            
+        }
 
-        renderer.setSize(600, 600)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         renderer.setClearColor(0xffffff, 0)
         renderer.shadowMap.type = PCFSoftShadowMap
@@ -136,10 +144,55 @@ const Panda = () => {
                 clock.start()
             }
         })
+
+        // Resize event listener
+        let mobile = window.innerWidth < 600 ? true : false
+        let small = !mobile && window.innerWidth < 1100 ? true : false
+        let large = !mobile && !small ? true : false
+        window.addEventListener('resize', () => {
+            if (mobile && window.innerWidth >= 600) {
+                mobile = false
+                small = true
+
+                renderer.setSize(450,450)
+            }
+
+            if (small && window.innerWidth < 600) {
+                mobile = true
+                small = false
+
+                renderer.setSize(250, 250)
+            }
+
+            if (small && window.innerWidth >= 1100) {
+                small = false
+                large = true
+
+                renderer.setSize(600, 600)
+            }
+            
+            if (large && window.innerWidth < 1100) {
+                small = true
+                large = false
+
+                renderer.setSize(450,450)
+            }
+        })
+
     })    
 
     return (
-        <canvas className='panda-webgl' visibility='hidden' width='inherit' height='45%'/>
+        <canvas 
+            className='panda-webgl' 
+            visibility='hidden' 
+            width='inherit' 
+            // height='45%'
+            sx={{
+                height: {
+                    m: '45%', xxs: '30%'
+                }
+            }}
+        />
     )
 }
 

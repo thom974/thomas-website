@@ -123,21 +123,37 @@ const mainAnim = () => {
     })
 
     // Animate logos (linkedin, github, email)
-    anime({
-        targets: logoTargets,
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: 'easeInCirc',
-        duration: 1500,
-        delay: 2000
-    })
-
-    anime({
-        targets: document.querySelectorAll('.logo'),
-        fill: '#56642a',
-        easing: 'easeInCirc',
-        duration: 500,
-        delay: 3500,
-    })
+    
+    if (window.innerWidth >= 850) {
+        anime({
+            targets: logoTargets,
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInCirc',
+            duration: 1500,
+            delay: 2000
+        })
+    
+        anime({
+            targets: document.querySelectorAll('.logo'),
+            fill: '#56642a',
+            easing: 'easeInCirc',
+            duration: 500,
+            delay: 3500,
+        })
+    } else {
+        anime({
+            targets: document.querySelectorAll('.mobile-desc'),
+            opacity: [0, 1],
+            duration: 5000,
+            delay: 4000,
+            begin: () => {
+                document.querySelectorAll('.mobile-desc').forEach(mobileDesc => {
+                    mobileDesc.style.visibility = 'visible'
+                })
+            }
+        })
+    }
+    
 
     // Make logo descriptions invisible
     anime({

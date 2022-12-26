@@ -107,7 +107,7 @@ const Navbar = ({ num, delay }) => {
     })
 
     return (
-        <Stack className={`.navbar-${num}`} justifyContent="center" alignItems="center" width='100%' height='10%'>
+        <Stack className={`.navbar-${num}`} justifyContent="center" alignItems="center" width='100%' height='10%' sx={{ display: { sm: 'flex', xxs: 'none' }}}>
             <Stack direction="row" spacing={50}>
                 <Typography className={`nav-home-${num}`} variant="navbar_main" visibility='hidden'><Redirect href='#home'>home</Redirect></Typography>
                 <Typography className={`nav-spacing-left-${num}`} variant="navbar_alt" visibility='hidden'>/</Typography>
