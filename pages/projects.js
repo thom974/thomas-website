@@ -77,7 +77,6 @@ const Image = styled('img')({
     // border: 'px solid #A6BB5A',
     width: '100%',
     height: '100%',
-    display: 'none',
     opacity: 1,
     // '&:hover' : {
     //     opacity: 1
@@ -123,25 +122,22 @@ const BorderBox = styled('div')({
 const Projects = () => {
     useEffect(() => {
         // Add event listeners to project entries
+        const overlay = document.querySelector('.project-preview-overlay')
         document.querySelectorAll('.project-entry-box').forEach(entry => {
-            
-            entry.addEventListener('mouseover', event => {
-                const id = event.fromElement.id
-                const overlay = document.querySelector('.project-preview-overlay')
-                overlay.style.transition = '0.4s'
-                overlay.style.transform = 'translateX(100%)'
-
-                if (event.fromElement != null) {
-                    overlay.currentProject = id
-
-                    // Temp fix for buggy images
-                    setTimeout(() => {
-                        const img = document.querySelector(`.project-preview-image-${id.substring(1)}`)
-                        img.style.display = 'inline'
-                    }, 400)
+            entry.addEventListener('mouseenter', event => {
+                if (!overlay.active && event.fromElement != null) {
+                    const id = event.fromElement.id
+                    overlay.style.transition = '0.4s'
+                    overlay.style.transform = 'translateX(100%)'
+    
+                    if (id != null) {
+                        overlay.currentProject = id
+                        overlay.active = true
+                        setTimeout(() => {
+                            overlay.active = false
+                        }, 750)
+                    }
                 }
-
-                
             })
             
             entry.addEventListener('mouseout', event => {
@@ -159,7 +155,6 @@ const Projects = () => {
         })
 
         // Add event listeners to project overlay
-        const overlay = document.querySelector('.project-preview-overlay')
         overlay.addEventListener('webkitTransitionEnd', event => {
             // User hovering over project entry
             if (event.elapsedTime == 0.4) {
@@ -190,30 +185,8 @@ const Projects = () => {
                         })
                     }
 
-                    // Make image visible (for temp bug fix)
-                    // setTimeout(400, () => {
-                    //     const image = previewImageOne.querySelector('.project-preview-image-1')
-                    //     image.style.display = 'inline'
+                    previewImageOne.querySelector('.project-preview-image-1').style.opacity = 1
 
-                    // })
-                    // anime({
-                    //     targets: '.project-preview-image-1',
-                    //     opacity: 0,
-                    //     duration: 1,
-                    //     complete: () => {
-                    //         anime({
-                    //             targets: '.project-preview-image-1',
-                    //             opacity: 1,
-                    //             easing: 'easeInExpo',
-                    //             duration: 200,
-                    //             begin: () => {
-                    //                 previewImageOne.querySelector('.project-preview-image-1').style.display = 'inline'
-                    //             },
-                    //             delay: 400
-                    //         })
-                    //     }
-                    // })
-                    
                     previewImageOne.style.display = 'inline-block'
                     previewImageTwo.style.display = 'none'
                     previewImageThree.style.display = 'none'
@@ -268,6 +241,8 @@ const Projects = () => {
                     //     }
                     // })
 
+                    previewImageTwo.querySelector('.project-preview-image-2').style.opacity = 1
+
                     previewImageOne.style.display = 'none'
                     previewImageTwo.style.display = 'inline-block'
                     previewImageThree.style.display = 'none'
@@ -315,6 +290,8 @@ const Projects = () => {
                     //     }
                     // })
 
+                    previewImageThree.querySelector('.project-preview-image-3').style.opacity = 1
+
                     previewImageOne.style.display = 'none'
                     previewImageTwo.style.display = 'none'
                     previewImageThree.style.display = 'inline-block'
@@ -361,6 +338,8 @@ const Projects = () => {
                     //         })
                     //     }
                     // })
+
+                    previewImageFour.querySelector('.project-preview-image-4').style.opacity = 1
 
                     previewImageOne.style.display = 'none'
                     previewImageTwo.style.display = 'none'
