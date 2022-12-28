@@ -127,7 +127,7 @@ const Main = () => {
                 alignItems='center' 
                 justifyContent='center'
                 height='90%'
-                width='100%'
+                width={{ xsm: '100%', xxs: '95%' }}
                 className='main-stack'
                 spacing={{ sm: 0, xxs: 25 }}
             >
