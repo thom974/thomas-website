@@ -36,7 +36,8 @@ const SvgDesc = styled('a')({
     visibility: 'hidden',
     '@media (max-width:850px)': {
         fontSize: 14
-    }
+    },
+    pointerEvents: 'none'
 })
 
 const SvgWrapper = styled('div')({

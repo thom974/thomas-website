@@ -68,17 +68,20 @@ const PItemDesc = styled('a')({
 })
 
 const Image = styled('img')({
-    display: 'block',
-    lineHeight: 0,
-    verticalAlign: 'bottom',
-    position: 'relative',
+    // display: 'block',
+    // lineHeight: 0,
+    // verticalAlign: 'bottom',
+    // position: 'relative',
     objectFit: 'cover',
     borderRadius: '12px',
-    border: '12px solid #A6BB5A',
+    // border: 'px solid #A6BB5A',
     width: '100%',
-    height: '80%',
-    padding: 0,
-    margin: 0,
+    height: '100%',
+    display: 'none',
+    opacity: 1,
+    // '&:hover' : {
+    //     opacity: 1
+    // }
 })
 
 const ImageDesc = styled('a')({
@@ -108,24 +111,50 @@ const ImageDesc = styled('a')({
     },
 })
 
+const BorderBox = styled('div')({
+    display: 'inline-block',
+    border: '10px solid #A6BB5A',
+    borderRadius: '24px',
+    lineHeight: 0,
+    width: '100%',
+    height: '80%',
+})
+
 const Projects = () => {
     useEffect(() => {
         // Add event listeners to project entries
         document.querySelectorAll('.project-entry-box').forEach(entry => {
+            
             entry.addEventListener('mouseover', event => {
+                const id = event.fromElement.id
                 const overlay = document.querySelector('.project-preview-overlay')
                 overlay.style.transition = '0.4s'
                 overlay.style.transform = 'translateX(100%)'
 
                 if (event.fromElement != null) {
-                    overlay.currentProject = event.fromElement.id
+                    overlay.currentProject = id
+
+                    // Temp fix for buggy images
+                    setTimeout(() => {
+                        const img = document.querySelector(`.project-preview-image-${id.substring(1)}`)
+                        img.style.display = 'inline'
+                    }, 400)
                 }
+
+                
             })
             
             entry.addEventListener('mouseout', event => {
+                // const id = event.fromElement.id
                 const overlay = document.querySelector('.project-preview-overlay')
                 overlay.style.transition = '0.3s'
-                overlay.style.transform = 'translateX(15%)'
+                // overlay.style.transform = 'translateX(15%)'
+                // if (event.fromElement != null) {
+                //     setTimeout(() => {
+                //         const img = document.querySelector(`.project-preview-image-${id.substring(1)}`)
+                //         img.style.display = 'none'
+                //     }, 300)
+                // }
             })
         })
 
@@ -136,10 +165,10 @@ const Projects = () => {
             if (event.elapsedTime == 0.4) {
                 // Handle content display for each project
                 const id = overlay.currentProject
-                const previewImageOne = document.querySelector('.project-preview-image-1')
-                const previewImageTwo = document.querySelector('.project-preview-image-2')
-                const previewImageThree = document.querySelector('.project-preview-image-3')
-                const previewImageFour = document.querySelector('.project-preview-image-4')
+                const previewImageOne = document.querySelector('.project-preview-image-box-1')
+                const previewImageTwo = document.querySelector('.project-preview-image-box-2')
+                const previewImageThree = document.querySelector('.project-preview-image-box-3')
+                const previewImageFour = document.querySelector('.project-preview-image-box-4')
                 const previewDescOne = document.querySelector('.project-preview-desc-1')
                 const previewDescTwo = document.querySelector('.project-preview-desc-2')
                 const previewDescThree = document.querySelector('.project-preview-desc-3')
@@ -161,7 +190,31 @@ const Projects = () => {
                         })
                     }
 
-                    previewImageOne.style.display = 'inline'
+                    // Make image visible (for temp bug fix)
+                    // setTimeout(400, () => {
+                    //     const image = previewImageOne.querySelector('.project-preview-image-1')
+                    //     image.style.display = 'inline'
+
+                    // })
+                    // anime({
+                    //     targets: '.project-preview-image-1',
+                    //     opacity: 0,
+                    //     duration: 1,
+                    //     complete: () => {
+                    //         anime({
+                    //             targets: '.project-preview-image-1',
+                    //             opacity: 1,
+                    //             easing: 'easeInExpo',
+                    //             duration: 200,
+                    //             begin: () => {
+                    //                 previewImageOne.querySelector('.project-preview-image-1').style.display = 'inline'
+                    //             },
+                    //             delay: 400
+                    //         })
+                    //     }
+                    // })
+                    
+                    previewImageOne.style.display = 'inline-block'
                     previewImageTwo.style.display = 'none'
                     previewImageThree.style.display = 'none'
                     previewImageFour.style.display = 'none'
@@ -173,6 +226,13 @@ const Projects = () => {
                     previewDescTwo.innerHTML = "art and animations all made from scratch,  custom level loading system"
                     previewDescThree.href = "https://github.com/thom974/the-green-reaper"
                     previewDescThree.innerHTML = "github source"
+
+                    // Animate image opacity
+                    // anime({
+                    //     targets: previewImageOne,
+                    //     opacity: 1,
+                    //     duration: 700
+                    // })
                 } else if (id == "02") {
                     const desc = document.querySelector('.project-entry-desc#desc2')
 
@@ -190,8 +250,26 @@ const Projects = () => {
                         })
                     }
 
+                    // anime({
+                    //     targets: '.project-preview-image-2',
+                    //     opacity: 0,
+                    //     duration: 1,
+                    //     complete: () => {
+                    //         anime({
+                    //             targets: '.project-preview-image-2',
+                    //             opacity: 1,
+                    //             easing: 'easeInExpo',
+                    //             duration: 200,
+                    //             begin: () => {
+                    //                 previewImageTwo.querySelector('.project-preview-image-2').style.display = 'inline'
+                    //             },
+                    //             delay: 300
+                    //         })
+                    //     }
+                    // })
+
                     previewImageOne.style.display = 'none'
-                    previewImageTwo.style.display = 'inline'
+                    previewImageTwo.style.display = 'inline-block'
                     previewImageThree.style.display = 'none'
                     previewImageFour.style.display = 'none'
                     previewDescOne.style.visibility = 'visible'
@@ -219,9 +297,27 @@ const Projects = () => {
                         })
                     }
 
+                    // anime({
+                    //     targets: '.project-preview-image-3',
+                    //     opacity: 0,
+                    //     duration: 1,
+                    //     complete: () => {
+                    //         anime({
+                    //             targets: '.project-preview-image-3',
+                    //             opacity: 1,
+                    //             easing: 'easeInExpo',
+                    //             duration: 200,
+                    //             begin: () => {
+                    //                 previewImageThree.querySelector('.project-preview-image-3').style.display = 'inline'
+                    //             },
+                    //             delay: 300
+                    //         })
+                    //     }
+                    // })
+
                     previewImageOne.style.display = 'none'
                     previewImageTwo.style.display = 'none'
-                    previewImageThree.style.display = 'inline'
+                    previewImageThree.style.display = 'inline-block'
                     previewImageFour.style.display = 'none'
                     previewDescOne.style.visibility = 'visible'
                     previewDescTwo.style.visibility = 'visible'
@@ -248,10 +344,28 @@ const Projects = () => {
                         })
                     }
 
+                    // anime({
+                    //     targets: '.project-preview-image-4',
+                    //     opacity: 0,
+                    //     duration: 10,
+                    //     complete: () => {
+                    //         anime({
+                    //             targets: '.project-preview-image-4',
+                    //             opacity: 1,
+                    //             easing: 'easeInExpo',
+                    //             duration: 200,
+                    //             begin: () => {
+                    //                 previewImageFour.querySelector('.project-preview-image-4').style.display = 'inline'
+                    //             },
+                    //             delay: 300
+                    //         })
+                    //     }
+                    // })
+
                     previewImageOne.style.display = 'none'
                     previewImageTwo.style.display = 'none'
                     previewImageThree.style.display = 'none'
-                    previewImageFour.style.display = 'inline'
+                    previewImageFour.style.display = 'inline-block'
                     previewDescOne.style.visibility = 'visible'
                     previewDescTwo.style.visibility = 'visible'
                     previewDescThree.style.visibility = 'visible'
@@ -263,7 +377,7 @@ const Projects = () => {
                 }
                 
                 // Move overlay back in after changing contents
-                overlay.style.transform = 'translateX(5%)'
+                overlay.style.transform = 'translateX(2%)'
             }
         })
 
@@ -276,10 +390,10 @@ const Projects = () => {
         document.querySelector('.projects-entries').style.visibility = 'hidden'
 
         // Hide project preview image + description
-        document.querySelector('.project-preview-image-1').style.display = 'none'
-        document.querySelector('.project-preview-image-2').style.display = 'none'
-        document.querySelector('.project-preview-image-3').style.display = 'none'
-        document.querySelector('.project-preview-image-4').style.display = 'none'
+        document.querySelector('.project-preview-image-box-1').style.display = 'none'
+        document.querySelector('.project-preview-image-box-2').style.display = 'none'
+        document.querySelector('.project-preview-image-box-3').style.display = 'none'
+        document.querySelector('.project-preview-image-box-4').style.display = 'none'
         document.querySelector('.project-preview-desc-1').style.visibility = 'hidden'
         document.querySelector('.project-preview-desc-2').style.visibility = 'hidden'
         document.querySelector('.project-preview-desc-3').style.visibility = 'hidden'
@@ -415,10 +529,14 @@ const Projects = () => {
                             direction='column'
                             justifyContent='flex-start'
                         >
-                            <Image className='project-preview-image-1' src='/projects/greenreaper.png'/>
+                            <BorderBox className='project-preview-image-box-1'><Image className='project-preview-image-1' src='https://i.ibb.co/F5M63HY/greenreaper.png'/></BorderBox>
+                            <BorderBox className='project-preview-image-box-2'><Image className='project-preview-image-2' src='https://i.ibb.co/yyd0mGr/roomsetup.png' /></BorderBox>
+                            <BorderBox className='project-preview-image-box-3'><Image className='project-preview-image-3' src='https://i.ibb.co/f1s7Fr2/hacktheridge.png'/></BorderBox>
+                            <BorderBox className='project-preview-image-box-4'><Image className='project-preview-image-4' src='https://i.ibb.co/bg8rQDK/osugen.png'/></BorderBox>
+                            {/* <Image className='project-preview-image-1' src='/projects/greenreaper.png'/>
                             <Image className='project-preview-image-2' src='/projects/roomsetup.png'/>
                             <Image className='project-preview-image-3' src='/projects/hacktheridge.png'/>
-                            <Image className='project-preview-image-4' src= '/projects/osugen.png'/>
+                            <Image className='project-preview-image-4' src= '/projects/osugen.png'/> */}
                             <Stack
                                 className='project-preview-descs'
                                 width='100%'
@@ -434,8 +552,9 @@ const Projects = () => {
                                     className='project-preview-desc-3'
                                     target='_blank'
                                     sx={{
+                                        color: '#da70d6',
                                         '&:hover' : {
-                                            textDecoration: 'underline'
+                                            textDecoration: 'underline',
                                         },
                                     }}
                                 />
