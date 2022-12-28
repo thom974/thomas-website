@@ -75,9 +75,9 @@ const Bamboo = () => {
         scene.add(camera)
         
         // Setting up renderer
-        const renderer = new WebGLRenderer({ canvas: canvas }) 
+        const renderer = new WebGLRenderer({ canvas: canvas })
 
-        renderer.setSize(500, 690)
+        renderer.setSize(window.innerWidth * 0.26, window.innerWidth * 0.26 / 0.726)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         renderer.setClearColor(0xffffff, 0)
         renderer.shadowMap.type = PCFSoftShadowMap
@@ -98,6 +98,11 @@ const Bamboo = () => {
                 scene.children[3].children[0].rotation.z += 0.5 / (10 * clock.getElapsedTime() + 0.5)
             }
         }
+
+        // Add resize event listener
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth * 0.26, window.innerWidth * 0.26 / 0.726)
+        })
     })
 
     return (

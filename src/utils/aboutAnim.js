@@ -123,7 +123,7 @@ const aboutAnim = () => {
 
     anime({
         targets: '.about-text .about-text-entry .about-text-overlay',
-        height: '100%',
+        height: document.querySelector('.about-text-content').offsetHeight,
         duration: 750, 
         easing: 'easeInOutQuint',
         direction: 'alternate',

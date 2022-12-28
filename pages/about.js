@@ -87,17 +87,17 @@ const About = () => {
                         height='100%'
                         justifyContent='center'
                         alignItems='center'
-                        spacing={200}
+                        spacing='10.4vw'
                     >
                         <Stack
                             className='about-text'
                             direction='column'
                             width='50%'
                             height='100%'
-                            justifyContent='flex-start'
+                            justifyContent='center'
                             alignItems='flex-start'
-                            pt='10%'
-                            spacing='10%'
+                            // pb='20vw'
+                            spacing={{ xxl: 100, m: 70, sm: 0 }}
                         >
                             <Stack
                                 className='about-text-entry'

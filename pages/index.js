@@ -80,12 +80,12 @@ export default function Home() {
         color: '#000000',
         background: '#ffffff',
         letterSpacing: '0.02em',
-        fontSize: 30,
+        fontSize: '1.2vw',
         fontFamily: [
           'Montserrat', 
           'sans-serif'
         ].join(','),
-        fontWeight: '600'
+        fontWeight: '600',
       },
     },
     components: {
