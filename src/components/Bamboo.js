@@ -15,7 +15,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { useEffect } from 'react'
 import EventEmitter from '../utils/EventEmitter'
 
-const Bamboo = () => {
+const Bamboo = ( pl ) => {
     useEffect(() => {
         // Setting up canvas and scene
         const canvas = document.querySelector('.bamboo-webgl')
@@ -108,7 +108,7 @@ const Bamboo = () => {
     })
 
     return (
-        <canvas className='bamboo-webgl' visibility='hidden' />
+        <canvas className='bamboo-webgl' visibility='hidden'/>
     )
 }
 

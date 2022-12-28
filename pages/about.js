@@ -115,6 +115,7 @@ const About = () => {
                             justifyContent='center'
                             alignItems='flex-start'
                             spacing={{ xxl: 100, m: 70, sm: 0, xxs: 50 }}
+                            pr={{ sm: 50, xxs: 0 }}
                         >
                             <Stack
                                 className='about-text-entry about-text-entry-1'
