@@ -120,6 +120,7 @@ const Main = () => {
             alignItems='center'
             height='100%'
             width='100%'
+            overflow='hidden'
         >    
             <Navbar num='1' delay={0} />
             <Stack 
