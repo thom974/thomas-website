@@ -41,11 +41,11 @@ const aboutAnim = () => {
 
     // Animate text size and line (INITIAL ANIMATIONS)
     anime({
-        targets: aboutSvg,
+        targets: document.querySelector('.about-sidebar-svg-container'),
         keyframes: [
-            { width: 144, height: 707, duration: 0 },
-            { translateX: '+=30vw', duration: 0 }, 
-            { width: 48, height: 235.77, duration: 400, delay: 3600, easing: 'easeInCirc' },
+            { width: '140px', height: '688px', duration: 1 },
+            { translateX: '+=30vw', duration: 1 }, 
+            { width: '48px', height: '236px', duration: 400, delay: 3600, easing: 'easeInCirc' },
             { translateX: 0, duration: 1500, easing: 'easeOutQuint'}
         ]
     })

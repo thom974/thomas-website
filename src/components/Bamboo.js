@@ -77,7 +77,7 @@ const Bamboo = () => {
         // Setting up renderer
         const renderer = new WebGLRenderer({ canvas: canvas })
 
-        renderer.setSize(window.innerWidth * 0.26, window.innerWidth * 0.26 / 0.726)
+        renderer.setSize(Math.max(700 * 0.26, window.innerWidth * 0.26), Math.max(700 * 0.26, window.innerWidth * 0.26) / 0.726)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         renderer.setClearColor(0xffffff, 0)
         renderer.shadowMap.type = PCFSoftShadowMap
@@ -101,7 +101,9 @@ const Bamboo = () => {
 
         // Add resize event listener
         window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth * 0.26, window.innerWidth * 0.26 / 0.726)
+            if (window.innerWidth > 700) {
+                renderer.setSize(window.innerWidth * 0.26, window.innerWidth * 0.26 / 0.726)
+            }
         })
     })
 

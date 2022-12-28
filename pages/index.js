@@ -31,6 +31,7 @@ export default function Home() {
         m: 1100,
         sm: 850,
         xs: 600,
+        xsm: 400,
         xxs: 0
       }
     },
@@ -86,7 +87,16 @@ export default function Home() {
           'sans-serif'
         ].join(','),
         fontWeight: '600',
-      },
+        '@media (max-width:850px)': {
+          fontSize: '2vw'
+        },
+        '@media (max-width:600px)': {
+          fontSize: '2.5vw'
+        },
+        '@media (max-width:400px)': {
+          fontSize: '3vw'
+        }
+      }
     },
     components: {
       
