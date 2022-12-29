@@ -24,7 +24,7 @@ const About = () => {
             width='100%'
             overflow='hidden'
         >
-            <Navbar num='2' delay={6000}/>
+            <Navbar num='2' delay={3000}/>
             <Stack 
                 className='about-stack'
                 width='100%'
@@ -104,7 +104,7 @@ const About = () => {
                         direction={{ sm: 'row', xxs: 'column' }}
                         width='90%'
                         height='100%'
-                        justifyContent='center'
+                        justifyContent='space-between'
                         alignItems='center'
                         spacing={{ sm: '10.4vw', xsm: 0, xxs: 20 }}
                     >
@@ -116,7 +116,7 @@ const About = () => {
                             justifyContent='center'
                             alignItems='flex-start'
                             spacing={{ xxl: 100, m: 70, sm: 0, xxs: 50 }}
-                            pr={{ sm: 50, xxs: 0 }}
+                            pl={{ sm: 50, xxs: 0 }}
                         >
                             <Stack
                                 className='about-text-entry about-text-entry-1'

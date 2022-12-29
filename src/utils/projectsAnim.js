@@ -39,7 +39,7 @@ const projectsAnim = () => {
         keyframes: [
             { width: 144, height: 707, duration: 0 },
             { translateX: '+=30vw', duration: 0 }, 
-            { width: 48, height: 235.77, duration: 400, delay: 3600, easing: 'easeInCirc' },
+            { width: 48, height: 235.77, duration: 400, delay: 1750, easing: 'easeInCirc' },
             { translateX: 0, duration: 1500, easing: 'easeOutQuint'}
         ]
     })
@@ -55,7 +55,7 @@ const projectsAnim = () => {
     tl.add({
         targets: projectNumberTargets,
         keyframes: [
-            { translateX: ['+=-50vh', 0], easing: 'easeOutQuint', delay: anime.stagger(200) },
+            { translateX: ['+=-50vh', 0], easing: 'easeOutQuint', delay: anime.stagger(50) },
         ]            
     }, 0)
 
@@ -63,39 +63,39 @@ const projectsAnim = () => {
         targets: projectNumberTargets,
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutQuint',
-        delay: anime.stagger(200),
-    }, 400)
+        delay: anime.stagger(100),
+    }, 200)
 
     tl.add({
         targets: projectNumberTargets,
         fill: '#56642a',
         easing: 'easeInOutQuint',
         duration: 1000,
-        delay: anime.stagger(300)
-    }, 800)
+        delay: anime.stagger(75)
+    }, 400)
 
     // Animate dash offset for letters
     tl.add({
         targets: projectLetterTargets,
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutQuint',
-        delay: anime.stagger(200)
-    }, 1200)
+        delay: anime.stagger(100)
+    }, 600)
 
     tl.add({
         targets: projectLetterTargets,
         fill: '#56642A',
         easing: 'easeInOutQuint',
-        delay: anime.stagger(200)
-    }, 1500)
+        delay: anime.stagger(60)
+    }, 1000)
 
     // Animate line growing
     tl.add({
         targets: lineAnimSvg,
         height: '50%',
-        duration: 1000,
+        duration: 500,
         easing: 'easeInOutQuint'
-    }, 4500)
+    }, 2750)
 
     // Animate project entries
     tl.add({
@@ -108,32 +108,32 @@ const projectsAnim = () => {
             const overlay = document.querySelector('.project-preview-overlay')
             overlay.style.visibility = 'visible'
         }
-    }, 5250)
+    }, 3000)
 
 // Animate projects preview overlay
     tl.add({
         targets: '.project-preview-overlay',
         height: '15%',
         duration: 100,
-    }, 6000)
+    }, 3300)
 
     tl.add({
         targets: '.project-preview-overlay',
         translateX: ["+=50vw", 0],
-        duration: 1000, 
+        duration: 500, 
         easing: 'easeInOutQuint',
         // begin: (anim) => {
         //     const overlay = document.querySelector('.project-preview-overlay')
         //     overlay.style.visibility = 'visible'
         // }
-    }, 6500)
+    }, 3300)
 
     tl.add({
         targets: '.project-preview-overlay',
         height: '75%',
-        duration: 1000,
+        duration: 750,
         easing: 'easeInOutQuint'
-    }, 7250)
+    }, 3750)
 }
 
 export default projectsAnim

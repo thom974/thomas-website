@@ -22,9 +22,17 @@ const PList = styled('ol')({
 })
 
 const PItem = styled('li')({
+    display: 'inline-block',
     position: 'relative',
-    paddingTop: '10%',
-    paddingBottom: '10%',
+    paddingTop: '7%',
+    paddingBottom: '7%',
+    '@media (max-width:1600px)': {
+        fontSize: '3vw'
+    },
+    '@media (max-width:1400px)': {
+        paddingTop: '9%',
+        paddingBottom: '9%'
+    },
     '&::before': {
         fontWeight: '400',
         fontSize: '16px',
@@ -39,6 +47,9 @@ const PItem = styled('li')({
         transformOrigin: '100% 100%',
         transform: 'translateY(-50%) rotate(-90deg)',
         top: '27%',
+        '@media (max-width:1100px)': {
+            top: '22%'
+        },
         right: 'calc(100% + 25px)',
     },
 })
@@ -65,6 +76,9 @@ const PItemDesc = styled('a')({
         'sans-serif'
       ].join(','),
     fontWeight: '600',
+    '@media (max-width:1600px)': {
+        fontSize: 17
+    }
 })
 
 const Image = styled('img')({
@@ -93,6 +107,9 @@ const ImageDesc = styled('a')({
         'sans-serif'
       ].join(','),
     fontWeight: '600',
+    '@media (max-width:1600px)': {
+        fontSize: 18
+    },
     '&::before': {
         fontWeight: '400',
         fontSize: '22px',
@@ -356,7 +373,8 @@ const Projects = () => {
                 }
                 
                 // Move overlay back in after changing contents
-                overlay.style.transform = 'translateX(2%)'
+                overlay.style.transform = 'translateX(5%)'
+                document.querySelector('.project-preview-descs').style.transform = 'translateX(-5%)'
             }
         })
 
@@ -388,7 +406,7 @@ const Projects = () => {
             height='100%'
             width='100%'
         >
-            <Navbar num='3' delay={5000} />
+            <Navbar num='3' delay={3300} />
             <Stack
                 width='100%'
                 height='90%'
@@ -404,6 +422,7 @@ const Projects = () => {
                     direction='column'
                     justifyContent='flex-start'
                     alignItems='flex-start'
+                    display={{ m: 'flex', xxs: 'none' }}
                     pt='2%'
                     spacing={36}
                     pl={53}
@@ -452,17 +471,20 @@ const Projects = () => {
                 <Stack
                     width='90%'
                     height='100%'
-                    direction='row'
+                    direction={{ sm: 'row', xxs: 'column' }}
                     justifyContent='flex-start'
-                    spacing='10%'
+                    alignItems='center'
+                    ml={{ m: 0, xxs: '10%' }}
                 >
                     {/* Project listing stack */}
                     <Stack
-                        width='40%'
+                        width={{ l: '40%', xxs: '55%' }}
                         height='100%'
                         direction='column'
-                        justifyContent='flex-start'
+                        justifyContent={{ m: 'flex-start', xxs: 'center' }}
                         alignItems='center'
+                        pl={{ l: 60, m: 90, xxs: 60 }}
+                        mr={{ l: '10%', m: '5%', xxs: '10%' }}
                     >
                         <PList 
                             className='projects-entries'
@@ -493,11 +515,11 @@ const Projects = () => {
                     {/* Project preview stack */}
                     {/* Will hold video */}
                     <Stack
-                        width='50%'
+                        width={{ l: '50%', m: '40%', xxs: '45%'}}
                         height='100%'
                         direction='column'
-                        justifyContent='flex-start'
-                        pt='2%'
+                        justifyContent={{ sm: 'flex-start', xxs: 'center' }}
+                        pt={{ m: '2%', xxs: '8%'}}
                     >
                         <Stack
                             visibility='hidden'
@@ -522,8 +544,9 @@ const Projects = () => {
                                 height='20%'
                                 direction='column'
                                 justifyContent='flex-start'
-                                spacing='2%'
-                                paddingTop='5%'
+                                spacing={{xl: '2%', xxs: '4%' }}
+                                pt={{ xl: '5%', xxs: '8%'}}
+                                pr='2%'
                             >
                                 <ImageDesc className='project-preview-desc-1' />
                                 <ImageDesc className='project-preview-desc-2' />

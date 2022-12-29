@@ -45,7 +45,7 @@ const aboutAnim = () => {
         keyframes: [
             { width: '140px', height: '688px', duration: 1 },
             { translateX: '+=30vw', duration: 1 }, 
-            { width: '48px', height: '236px', duration: 400, delay: 3600, easing: 'easeInCirc' },
+            { width: '48px', height: '236px', duration: 400, delay: 1750, easing: 'easeInCirc' },
             { translateX: 0, duration: 1500, easing: 'easeOutQuint'}
         ]
     })
@@ -61,7 +61,7 @@ const aboutAnim = () => {
     tl.add({
         targets: aboutNumberTargets,
         keyframes: [
-            { translateX: ['+=-50vh', 0], easing: 'easeOutQuint', delay: anime.stagger(200) },
+            { translateX: ['+=-50vh', 0], easing: 'easeOutQuint', delay: anime.stagger(50) },
         ]            
     }, 0)
     
@@ -69,47 +69,47 @@ const aboutAnim = () => {
         targets: aboutNumberTargets,
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutQuint',
-        delay: anime.stagger(200),
-    }, 400)
+        delay: anime.stagger(100),
+    }, 200)
 
     tl.add({
         targets: aboutNumberTargets,
         fill: '#A7BC5B',
         easing: 'easeInOutQuint',
         duration: 1000,
-        delay: anime.stagger(300)
-    }, 800)
+        delay: anime.stagger(75)
+    }, 400)
 
     // Animate dash offset for letters
     tl.add({
         targets: aboutLetterTargets,
         translateX: ["+=-50vh", 0],
         easing: 'easeOutQuint',
-        delay: anime.stagger(200)
-    }, 800)
+        delay: anime.stagger(50)
+    }, 400)
 
     tl.add({
         targets: aboutLetterTargets,
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutQuint',
-        delay: anime.stagger(200)
-    }, 1200)
+        delay: anime.stagger(100)
+    }, 600)
 
 
     tl.add({
         targets: aboutLetterTargets,
         fill: '#56642A',
         easing: 'easeInOutQuint',
-        delay: anime.stagger(200)
-    }, 1400)
+        delay: anime.stagger(150)
+    }, 700)
 
     // Animate line growing
     tl.add({
         targets: '.about-line-svg-anim',
         height: '50%',
-        duration: 1000,
+        duration: 500,
         easing: 'easeInOutQuint'
-    }, 4500)
+    }, 2750)
 
     /**
      * ANIMATE TEXT CONTENT OF ABOUT PAGE
@@ -124,17 +124,17 @@ const aboutAnim = () => {
     anime({
         targets: '.about-text .about-text-entry .about-text-overlay',
         height: document.querySelector('.about-text-content').offsetHeight,
-        duration: 750, 
+        duration: 600, 
         easing: 'easeInOutQuint',
         direction: 'alternate',
-        delay: 5100 + anime.stagger(100)
+        delay: 3000 + anime.stagger(50)
     })
 
     anime({
         targets: '.about-text .about-text-entry .about-text-content',
         color: '#000000',
         duration: 1,
-        delay: 5800
+        delay: 3600
     })
 
     // Animate canvas opacity
@@ -143,7 +143,7 @@ const aboutAnim = () => {
         opacity: 1,
         easing: 'easeInSine',
         duration: 500,
-        delay: 6250,
+        delay: 3200,
         complete: (anim) => {
             const bambooEvent = new Event('bamboo')
             window.dispatchEvent(bambooEvent)
