@@ -98,42 +98,48 @@ const projectsAnim = () => {
     }, 2750)
 
     // Animate project entries
+    const offset =  window.innerWidth >= 600 ? 0 : 2700
+
     tl.add({
         targets: '.projects-entries .project-entry',
-        translateX: ["+=-50vw", 0],
+        translateX: offset > 0 ? ["+=-100vw", 0] : ["+=-50vw", 0],
         duration: 1000,
         easing: 'easeOutCirc',
         delay: anime.stagger(250),
         begin: (anim) => {
             const overlay = document.querySelector('.project-preview-overlay')
             overlay.style.visibility = 'visible'
+            
+            document.querySelectorAll('.project-entry').forEach(entry => {
+                entry.style.visibility = 'visible'
+            })
         }
-    }, 3000)
+    }, 3000 - offset)
 
 // Animate projects preview overlay
     tl.add({
         targets: '.project-preview-overlay',
         height: '15%',
         duration: 100,
-    }, 3300)
+    }, 3300 - offset)
 
     tl.add({
         targets: '.project-preview-overlay',
-        translateX: ["+=50vw", 0],
+        translateX: offset > 0 ? ["+=100vw", 0] : ["+=50vw", 0],
         duration: 500, 
         easing: 'easeInOutQuint',
         // begin: (anim) => {
         //     const overlay = document.querySelector('.project-preview-overlay')
         //     overlay.style.visibility = 'visible'
         // }
-    }, 3300)
+    }, 3300 - offset)
 
     tl.add({
         targets: '.project-preview-overlay',
         height: '75%',
         duration: 750,
         easing: 'easeInOutQuint'
-    }, 3750)
+    }, 3750 - offset)
 }
 
 export default projectsAnim

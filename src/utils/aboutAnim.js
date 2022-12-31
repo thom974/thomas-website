@@ -115,6 +115,8 @@ const aboutAnim = () => {
      * ANIMATE TEXT CONTENT OF ABOUT PAGE
      *  */
 
+    const offset =  window.innerWidth >= 600 ? 0 : 2700
+
     anime({
         targets: '.about-text .about-text-entry .about-text-overlay',
         height: 0,
@@ -127,14 +129,14 @@ const aboutAnim = () => {
         duration: 600, 
         easing: 'easeInOutQuint',
         direction: 'alternate',
-        delay: 3000 + anime.stagger(50)
+        delay: 3000 - offset + anime.stagger(50)
     })
 
     anime({
         targets: '.about-text .about-text-entry .about-text-content',
         color: '#000000',
         duration: 1,
-        delay: 3600
+        delay: 3600 - offset
     })
 
     // Animate canvas opacity
@@ -143,7 +145,7 @@ const aboutAnim = () => {
         opacity: 1,
         easing: 'easeInSine',
         duration: 500,
-        delay: 3200,
+        delay: 3400 - offset,
         complete: (anim) => {
             const bambooEvent = new Event('bamboo')
             window.dispatchEvent(bambooEvent)
