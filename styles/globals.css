@@ -20,6 +20,11 @@ div#__next {
   scroll-behavior: smooth;
 }
 
+::selection {
+  background: #b2e6ae;
+  color: #fff
+}
+
 a {
   color: inherit;
   text-decoration: none;
