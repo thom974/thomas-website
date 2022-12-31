@@ -32,6 +32,7 @@ export default function Home() {
         sm: 850,
         xs: 600,
         xsm: 400,
+        xxsm: 350,
         xxs: 0
       }
     },
