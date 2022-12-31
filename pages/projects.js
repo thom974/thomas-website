@@ -18,7 +18,11 @@ const PList = styled('ol')({
     fontWeight: '600',
     letterSpacing: '0.06em',
     paddingLeft: '0',
-    counterReset: 'my-counter'
+    counterReset: 'my-counter',
+    '@media (max-width: 849px)': {
+        marginTop: 25,
+        marginBottom: 0
+    }
 })
 
 const PItem = styled('li')({
@@ -33,9 +37,21 @@ const PItem = styled('li')({
         paddingTop: '9%',
         paddingBottom: '9%'
     },
+    '@media (max-width:1099px)': {
+        paddingTop: '15%',
+        paddingBottom: '15%'
+    },
+    '@media (max-width:849px)': {
+        paddingTop: '5%',
+        paddingBottom: '5%'
+    },
+    '@media (max-width:399px)': {
+        paddingTop: '7%',
+        paddingBottom: '7%'
+    },
     '&::before': {
         fontWeight: '400',
-        fontSize: '16px',
+        fontSize: 16,
         fontFamily: [
             'Archivo', 
             'sans-serif'
@@ -47,8 +63,15 @@ const PItem = styled('li')({
         transformOrigin: '100% 100%',
         transform: 'translateY(-50%) rotate(-90deg)',
         top: '27%',
-        '@media (max-width:1100px)': {
-            top: '22%'
+        '@media (max-width:1099px)': {
+            top: '30%'
+        },
+        '@media (max-width:849px)': {
+            top: '20%'
+        },
+        '@media (max-width:399px)': {
+            fontSize: 13,
+            top: '20%'
         },
         right: 'calc(100% + 25px)',
     },
@@ -63,7 +86,16 @@ const PItemContent = styled('a')({
         'WebkitTextStroke': '#56642A',
         'WebkitTextStrokeWidth' : '0.01px',
         transform: 'translateX(20%)'
-    }
+    },
+    '@media (max-width:849px)': {
+        fontSize: 25
+    },
+    '@media (max-width:399px)': {
+        fontSize: 20
+    },
+    '@media (max-height:849px)': {
+        fontSize: 17
+    },
 })
 
 const PItemDesc = styled('a')({
@@ -76,25 +108,32 @@ const PItemDesc = styled('a')({
         'sans-serif'
       ].join(','),
     fontWeight: '600',
+    lineHeight: '25px',
     '@media (max-width:1600px)': {
         fontSize: 17
-    }
+    },
+    '@media (max-width:1099px)': {
+        paddingTop: '3%'
+    },
+    '@media (max-width:599px)': {
+        fontSize: 14
+    },
+    '@media (max-width:399px)': {
+        fontSize: 12,
+        lineHeight: '20px'
+    },
+    '@media (max-height:849px)': {
+        fontSize: 12,
+        lineHeight: '20px'
+    },
 })
 
 const Image = styled('img')({
-    // display: 'block',
-    // lineHeight: 0,
-    // verticalAlign: 'bottom',
-    // position: 'relative',
     objectFit: 'cover',
     borderRadius: '12px',
-    // border: 'px solid #A6BB5A',
     width: '100%',
     height: '100%',
     opacity: 1,
-    // '&:hover' : {
-    //     opacity: 1
-    // }
 })
 
 const ImageDesc = styled('a')({
@@ -110,9 +149,15 @@ const ImageDesc = styled('a')({
     '@media (max-width:1600px)': {
         fontSize: 18
     },
+    '@media (max-width:1099px)': {
+        fontSize: 15
+    },
+    '@media (max-width:399px)': {
+        fontSize: 12
+    },
     '&::before': {
         fontWeight: '400',
-        fontSize: '22px',
+        fontSize: 22,
         fontFamily: [
             'Archivo', 
             'sans-serif'
@@ -124,16 +169,29 @@ const ImageDesc = styled('a')({
         transform: 'translateY(-50%) rotate(-90deg)',
         top:'-25%',
         right: 'calc(100% + 25px)',
+        '@media (max-width: 849px)': {
+            fontSize: 18
+        }
     },
 })
 
 const BorderBox = styled('div')({
     display: 'inline-block',
     border: '10px solid #A6BB5A',
+    '@media (max-width: 849px)': {
+        border: '7px solid #A6BB5A',
+        borderRadius: '18px'
+    },
     borderRadius: '24px',
     lineHeight: 0,
     width: '100%',
     height: '80%',
+    '@media (max-height: 850px)': {
+        height: '70%'
+    },
+    '@media (max-width: 349px)': {
+        height: '60%'
+    }    
 })
 
 const Projects = () => {
@@ -143,7 +201,7 @@ const Projects = () => {
         document.querySelectorAll('.project-entry-box').forEach(entry => {
             entry.addEventListener('mouseenter', event => {
                 if (!overlay.active && event.fromElement != null) {
-                    const id = event.fromElement.id
+                    const id = event.path[1].id
                     overlay.style.transition = '0.4s'
                     overlay.style.transform = 'translateX(100%)'
     
@@ -409,11 +467,11 @@ const Projects = () => {
             <Navbar num='3' delay={3300} />
             <Stack
                 width='100%'
-                height='90%'
+                height={{ sm: '90%', xxs: '100%' }}
                 justifyContent='flex-start'
                 className='projects-stack'
                 direction='row'
-                pt='2%'
+                pt={{ sm: '2%', xxs: 0 }}
             >
                 <Stack
                     className='projects-sidebar'
@@ -474,17 +532,18 @@ const Projects = () => {
                     direction={{ sm: 'row', xxs: 'column' }}
                     justifyContent='flex-start'
                     alignItems='center'
-                    ml={{ m: 0, xxs: '10%' }}
+                    ml={{ m: 0, xsm: '10%', xxs: '5%' }}
                 >
                     {/* Project listing stack */}
                     <Stack
-                        width={{ l: '40%', xxs: '55%' }}
-                        height='100%'
+                        width={{ l: '40%', m: '55%', xxs: '90%' }}
+                        height={{ sm: '100%', xxs: '50%'}}
                         direction='column'
-                        justifyContent={{ m: 'flex-start', xxs: 'center' }}
+                        justifyContent={{ sm: 'flex-start', xxs: 'center' }}
                         alignItems='center'
                         pl={{ l: 60, m: 90, xxs: 60 }}
                         mr={{ l: '10%', m: '5%', xxs: '10%' }}
+                        // pb={{ m: 0, xxs: '5%'}}
                     >
                         <PList 
                             className='projects-entries'
@@ -515,11 +574,12 @@ const Projects = () => {
                     {/* Project preview stack */}
                     {/* Will hold video */}
                     <Stack
-                        width={{ l: '50%', m: '40%', xxs: '45%'}}
-                        height='100%'
-                        direction='column'
+                        width={{ l: '50%', m: '40%', xxs: '100%'}}
+                        height={{ sm: '100%', xxs: '50%'}}
+                        direction={{sm: 'column', xxs: 'row' }}
                         justifyContent={{ sm: 'flex-start', xxs: 'center' }}
-                        pt={{ m: '2%', xxs: '8%'}}
+                        pt={{ m: '2%', xxs: 0 }}
+                        ml={{ xsm: 0, xxs: '12%' }}
                     >
                         <Stack
                             visibility='hidden'
@@ -528,7 +588,8 @@ const Projects = () => {
                             height='75%'
                             backgroundColor='#A7BC5B'
                             direction='column'
-                            justifyContent='flex-start'
+                            justifyContent={{ xxsm: 'flex-start', xxs: 'center'}}
+                            alignItems={{ xs: 'flex-start', xxs: 'flex-end'}}
                         >
                             <BorderBox className='project-preview-image-box-1'><Image className='project-preview-image-1' src='https://i.ibb.co/F5M63HY/greenreaper.png'/></BorderBox>
                             <BorderBox className='project-preview-image-box-2'><Image className='project-preview-image-2' src='https://i.ibb.co/yyd0mGr/roomsetup.png' /></BorderBox>
@@ -540,12 +601,12 @@ const Projects = () => {
                             <Image className='project-preview-image-4' src= '/projects/osugen.png'/> */}
                             <Stack
                                 className='project-preview-descs'
-                                width='100%'
+                                width={{ xs: '100%', xxs: '90%'}}
                                 height='20%'
                                 direction='column'
                                 justifyContent='flex-start'
                                 spacing={{xl: '2%', xxs: '4%' }}
-                                pt={{ xl: '5%', xxs: '8%'}}
+                                pt={{ xl: '5%', m: '8%', xs: '6%', xxs: '8%'}}
                                 pr='2%'
                             >
                                 <ImageDesc className='project-preview-desc-1' />
