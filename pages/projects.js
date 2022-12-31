@@ -271,8 +271,8 @@ const Projects = () => {
                     previewDescTwo.style.visibility = 'visible'
                     previewDescThree.style.visibility = 'visible'
 
-                    previewDescOne.innerHTML = "an environmentally friendly game featuring a spell-casting grim reaper"
-                    previewDescTwo.innerHTML = "art and animations all made from scratch,  custom level loading system"
+                    previewDescOne.innerHTML = "Indie game featuring animated spell-casting system and automated enemies to kill, extensive animation system built for sprites."
+                    previewDescTwo.innerHTML = "All art and animations are hand-drawn by myself, including sprites and spell animations (lightning, slash, etc.)"
                     previewDescThree.href = "https://github.com/thom974/the-green-reaper"
                     previewDescThree.innerHTML = "github source"
 
@@ -327,8 +327,8 @@ const Projects = () => {
                     previewDescTwo.style.visibility = 'visible'
                     previewDescThree.style.visibility = 'visible'
 
-                    previewDescOne.innerHTML = "discord bot for room designing! work a job, browse the market and 3D render your room!"
-                    previewDescTwo.innerHTML = "Three.js for 3D rendering, handled by an external Express.js server, hand-crafted Blender models, PostgreSQL database."
+                    previewDescOne.innerHTML = "Discord bot for room designing! work a job, browse the live market and 3D render your room! Over 20 custom commands for user interaction."
+                    previewDescTwo.innerHTML = "Three.js for 3D rendering which was handled by an external Express.js server, features hand-crafted Blender models and a PostgreSQL database to store all user data."
                     previewDescThree.href = "https://github.com/thom974/room-setup-bot"
                     previewDescThree.innerHTML = "github source"
                 } else if (id == "03") {
@@ -376,8 +376,8 @@ const Projects = () => {
                     previewDescTwo.style.visibility = 'visible'
                     previewDescThree.style.visibility = 'visible'
                     
-                    previewDescOne.innerHTML = 'real-time physics based rendering with Three.js, models made from scratch in Blender'
-                    previewDescTwo.innerHTML = 'keyframed animations with GSAP, leveraged React component library Chakra UI'
+                    previewDescOne.innerHTML = 'Real-time physics based rendering with Three.js using models made from scratch in Blender.'
+                    previewDescTwo.innerHTML = 'Keyframed animations with GSAP for seamless transitions and leveraged React component library Chakra UI.'
                     previewDescThree.href = 'https://github.com/thom974/htr-website'
                     previewDescThree.innerHTML = 'github source'
                 } else {
@@ -425,8 +425,8 @@ const Projects = () => {
                     previewDescTwo.style.visibility = 'visible'
                     previewDescThree.style.visibility = 'visible'
                     
-                    previewDescOne.innerHTML = 'tool to search for and automatically install beatmaps for the game osu!.'
-                    previewDescTwo.innerHTML = 'requires users to verify using OAuth 2.0 and uses WebDriver to simulate browser interactions.'
+                    previewDescOne.innerHTML = 'Tool to search for and automatically install beatmaps for the game osu! based on provided filters (difficulty, length, ranked status, etc.)'
+                    previewDescTwo.innerHTML = 'Requires users to verify using OAuth 2.0 and uses WebDriver to simulate browser interactions for automatic search and download of beatmaps.'
                     previewDescThree.href = 'https://github.com/thom974/osu--beatmap-gen-v3'
                     previewDescThree.innerHTML = 'github source'
                 }
