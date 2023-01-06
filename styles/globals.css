@@ -37,3 +37,9 @@ a {
 .scroll-snap-child {
   scroll-snap-align: start;
 }
+
+/* @media screen and (max-height: 1000px) {
+  .intro-name-box {
+    width: 550px;
+  }
+} */

@@ -97,9 +97,9 @@ const Panda = () => {
         const renderer = new WebGLRenderer({ canvas: canvas }) 
         
         // Initalize canvas size depending on initial viewport size
-        if (window.innerWidth < 600) {
+        if (window.innerWidth < 600 || window.innerHeight < 600) {
             renderer.setSize(250, 250)            
-        } else if (window.innerWidth >= 600 && window.innerWidth < 1100) {
+        } else if (window.innerWidth >= 600 && window.innerWidth < 1100 || window.innerHeight >= 600 && window.innerHeight < 1000) {
             renderer.setSize(450, 450)
         } else {
             renderer.setSize(600, 600)            
@@ -149,7 +149,12 @@ const Panda = () => {
         let mobile = window.innerWidth < 600 ? true : false
         let small = !mobile && window.innerWidth < 1100 ? true : false
         let large = !mobile && !small ? true : false
+
+        let mobileH = window.innerHeight < 600 ? true : false
+        let smallH = !mobileH && window.innerHeight < 1000 ? true : false
+        let largeH = !mobileH && !smallH ? true : false
         window.addEventListener('resize', () => {
+            // For width
             if (mobile && window.innerWidth >= 600) {
                 mobile = false
                 small = true
@@ -174,6 +179,35 @@ const Panda = () => {
             if (large && window.innerWidth < 1100) {
                 small = true
                 large = false
+
+                renderer.setSize(450,450)
+            }
+
+            // For height
+            if (mobileH && window.innerHeight >= 600) {
+                mobileH = false
+                smallH = true
+
+                renderer.setSize(450,450)
+            }
+
+            if (smallH && window.innerHeight < 600) {
+                mobileH = true
+                smallH = false
+
+                renderer.setSize(250, 250)
+            }
+
+            if (smallH && window.innerHeight >= 1000) {
+                smallH = false
+                largeH = true
+
+                renderer.setSize(600, 600)
+            }
+            
+            if (largeH && window.innerHeight < 1000) {
+                smallH = true
+                largeH = false
 
                 renderer.setSize(450,450)
             }

@@ -48,6 +48,9 @@ export default function Home() {
         fontWeight: '600',
         '@media (max-width:1100px)': {
           fontSize: 20
+        },
+        '@media (max-height:849px)': {
+          fontSize: 20
         }
       },
       navbar_alt: {
@@ -57,7 +60,13 @@ export default function Home() {
           'Montserrat', 
           'sans-serif'
         ].join(','),
-        fontWeight: '600'
+        fontWeight: '600',
+        '@media (max-width:1100px)': {
+          fontSize: 20
+        },
+        '@media (max-height:849px)': {
+          fontSize: 20
+        }
       },
       title: {
         color: '#A7BC5B',

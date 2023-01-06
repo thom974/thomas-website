@@ -155,6 +155,7 @@ const Intro = () => {
                 {/* <Typography variant='title'>Thomas Luc</Typography> */}
                     {/* <SvgContainer> */}
                     <Box
+                        className='intro-name-box'
                         sx={{
                             width: { l: 650, m: 550, sm: 450, xs: 400,  xxs: 300 },
                         }}
