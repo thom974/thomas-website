@@ -31,6 +31,9 @@ const PItem = styled('li')({
     paddingTop: '7%',
     paddingBottom: '7%',
     visibility: 'hidden',
+    '@media (min-width:1600px)': {
+        fontSize: '2vw'
+    },
     '@media (max-width:1600px)': {
         fontSize: '2vw'
     },
