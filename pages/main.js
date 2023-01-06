@@ -263,9 +263,9 @@ const Main = () => {
                         height={{ xs: '15%', xxs: '20%' }}
                         spacing={{ sm: 0, xs: 60, xxs: 30 }}
                     >
-                        <SvgDesc className='mobile-desc' target="_blank" href="https://github.com/thom974">/ github</SvgDesc>
-                        <SvgDesc className='mobile-desc' target="_blank" href="https://www.linkedin.com/in/thomas-luc/">/ linkedin</SvgDesc>
-                        <SvgDesc className='mobile-desc' target="_blank" href="/thomaslucresume.pdf">/ resume</SvgDesc>
+                        <SvgDesc sx={{ pointerEvents: 'auto' }} className='mobile-desc' target="_blank" href="https://github.com/thom974">/ github</SvgDesc>
+                        <SvgDesc sx={{ pointerEvents: 'auto' }} className='mobile-desc' target="_blank" href="https://www.linkedin.com/in/thomas-luc/">/ linkedin</SvgDesc>
+                        <SvgDesc sx={{ pointerEvents: 'auto' }} className='mobile-desc' target="_blank" href="/thomaslucresume.pdf">/ resume</SvgDesc>
                     </Stack>
                 </Stack>
 
