@@ -137,7 +137,7 @@ export default function Home() {
       }
 
       if (projectsStackRect.top <= window.innerHeight * 0.5 && projectsActive) {
-        setTimeout(projectsAnim, 100)
+        setTimeout(projectsAnim, 300)
         window.dispatchEvent(new Event('navbar-3'))
         projectsActive = false
       }
