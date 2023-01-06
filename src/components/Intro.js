@@ -157,7 +157,7 @@ const Intro = () => {
                     <Box
                         className='intro-name-box'
                         sx={{
-                            width: { l: 650, m: 550, sm: 450, xs: 400,  xxs: 300 },
+                            width: { l: 500, m: 400, sm: 300, xs: 250,  xxs: 150 },
                         }}
                     >
                         <svg 
@@ -186,7 +186,7 @@ const Intro = () => {
                 {/* <Typography variant='subheading'>Hello! I'm a Computer Engineering student studying @ Waterloo!</Typography> */}
                 <Box
                     sx={{
-                        width: { l: 900, m: 700, sm: 600, xs: 500, xxs: 300 },
+                        width: { l: 800, m: 600, sm: 500, xs: 400, xxs: 200 },
                     }}
                 >
                     <svg 

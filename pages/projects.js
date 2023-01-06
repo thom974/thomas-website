@@ -26,13 +26,13 @@ const PList = styled('ol')({
 })
 
 const PItem = styled('li')({
-    display: 'inline-block',
+    display: 'block',
     position: 'relative',
     paddingTop: '7%',
     paddingBottom: '7%',
     visibility: 'hidden',
     '@media (max-width:1600px)': {
-        fontSize: '3vw'
+        fontSize: '2vw'
     },
     '@media (max-width:1400px)': {
         paddingTop: '9%',
@@ -94,7 +94,7 @@ const PItemContent = styled('a')({
     '@media (max-width:399px)': {
         fontSize: 20
     },
-    '@media (max-height:849px)': {
+    '@media (max-height:849px) and (max-width:425px)': {
         fontSize: 17
     },
 })
@@ -592,10 +592,10 @@ const Projects = () => {
                             justifyContent={{ xxsm: 'flex-start', xxs: 'center'}}
                             alignItems={{ xs: 'flex-start', xxs: 'flex-end'}}
                         >
-                            <BorderBox className='project-preview-image-box-1'><Image className='project-preview-image-1' src='https://i.ibb.co/F5M63HY/greenreaper.png'/></BorderBox>
-                            <BorderBox className='project-preview-image-box-2'><Image className='project-preview-image-2' src='https://i.ibb.co/yyd0mGr/roomsetup.png' /></BorderBox>
-                            <BorderBox className='project-preview-image-box-3'><Image className='project-preview-image-3' src='https://i.ibb.co/f1s7Fr2/hacktheridge.png'/></BorderBox>
-                            <BorderBox className='project-preview-image-box-4'><Image className='project-preview-image-4' src='https://i.ibb.co/bg8rQDK/osugen.png'/></BorderBox>
+                            <BorderBox className='project-preview-image-box-1'><Image className='project-preview-image-1'/></BorderBox>
+                            <BorderBox className='project-preview-image-box-2'><Image className='project-preview-image-2' /></BorderBox>
+                            <BorderBox className='project-preview-image-box-3'><Image className='project-preview-image-3' /></BorderBox>
+                            <BorderBox className='project-preview-image-box-4'><Image className='project-preview-image-4' /></BorderBox>
                             {/* <Image className='project-preview-image-1' src='/projects/greenreaper.png'/>
                             <Image className='project-preview-image-2' src='/projects/roomsetup.png'/>
                             <Image className='project-preview-image-3' src='/projects/hacktheridge.png'/>
