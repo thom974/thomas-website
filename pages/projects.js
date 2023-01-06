@@ -225,13 +225,28 @@ const Projects = () => {
                 // const id = event.fromElement.id
                 const overlay = document.querySelector('.project-preview-overlay')
                 overlay.style.transition = '0.3s'
-                // overlay.style.transform = 'translateX(15%)'
-                // if (event.fromElement != null) {
-                //     setTimeout(() => {
-                //         const img = document.querySelector(`.project-preview-image-${id.substring(1)}`)
-                //         img.style.display = 'none'
-                //     }, 300)
-                // }
+            })
+
+            entry.addEventListener('touchenter', event => {
+                if (!overlay.active && event.fromElement != null) {
+                    const id = event.path[1].id
+                    overlay.style.transition = '0.4s'
+                    overlay.style.transform = 'translateX(100%)'
+    
+                    if (id != null) {
+                        overlay.currentProject = id
+                        overlay.active = true
+                        setTimeout(() => {
+                            overlay.active = false
+                        }, 750)
+                    }
+                }
+            })
+            
+            entry.addEventListener('touchleave', event => {
+                // const id = event.fromElement.id
+                const overlay = document.querySelector('.project-preview-overlay')
+                overlay.style.transition = '0.3s'
             })
         })
 
