@@ -180,7 +180,7 @@ const ImageDesc = styled('a')({
 })
 
 const BorderBox = styled('div')({
-    display: 'inline-block',
+    display: 'flex',
     border: '10px solid #A6BB5A',
     '@media (max-width: 849px)': {
         border: '7px solid #A6BB5A',
@@ -264,7 +264,7 @@ const Projects = () => {
                         })
                     }
 
-                    previewImageOne.querySelector('.project-preview-image-1').style.opacity = 1
+                    // previewImageOne.querySelector('.project-preview-image-1').style.opacity = 1
 
                     previewImageOne.style.display = 'inline-block'
                     previewImageTwo.style.display = 'none'
@@ -320,7 +320,7 @@ const Projects = () => {
                     //     }
                     // })
 
-                    previewImageTwo.querySelector('.project-preview-image-2').style.opacity = 1
+                    // previewImageTwo.querySelector('.project-preview-image-2').style.opacity = 1
 
                     previewImageOne.style.display = 'none'
                     previewImageTwo.style.display = 'inline-block'
@@ -369,7 +369,7 @@ const Projects = () => {
                     //     }
                     // })
 
-                    previewImageThree.querySelector('.project-preview-image-3').style.opacity = 1
+                    // previewImageThree.querySelector('.project-preview-image-3').style.opacity = 1
 
                     previewImageOne.style.display = 'none'
                     previewImageTwo.style.display = 'none'
@@ -418,7 +418,7 @@ const Projects = () => {
                     //     }
                     // })
 
-                    previewImageFour.querySelector('.project-preview-image-4').style.opacity = 1
+                    // previewImageFour.querySelector('.project-preview-image-4').style.opacity = 1
 
                     previewImageOne.style.display = 'none'
                     previewImageTwo.style.display = 'none'
@@ -595,10 +595,10 @@ const Projects = () => {
                             justifyContent={{ xxsm: 'flex-start', xxs: 'center'}}
                             alignItems={{ xs: 'flex-start', xxs: 'flex-end'}}
                         >
-                            <BorderBox className='project-preview-image-box-1'><Image className='project-preview-image-1'/></BorderBox>
-                            <BorderBox className='project-preview-image-box-2'><Image className='project-preview-image-2' /></BorderBox>
-                            <BorderBox className='project-preview-image-box-3'><Image className='project-preview-image-3' /></BorderBox>
-                            <BorderBox className='project-preview-image-box-4'><Image className='project-preview-image-4' /></BorderBox>
+                            <BorderBox className='project-preview-image-box-1'><Stack width='100%' height='100%' justifyContent='center' alignItems='center'><PItemDesc>project preview available on github!</PItemDesc></Stack></BorderBox>
+                            <BorderBox className='project-preview-image-box-2'><Stack width='100%' height='100%' justifyContent='center' alignItems='center'><PItemDesc>project preview available on github!</PItemDesc></Stack></BorderBox>
+                            <BorderBox className='project-preview-image-box-3'><Stack width='100%' height='100%' justifyContent='center' alignItems='center'><PItemDesc>project preview available on github!</PItemDesc></Stack></BorderBox>
+                            <BorderBox className='project-preview-image-box-4'><Stack width='100%' height='100%' justifyContent='center' alignItems='center'><PItemDesc>project preview available on github!</PItemDesc></Stack></BorderBox>
                             {/* <Image className='project-preview-image-1' src='/projects/greenreaper.png'/>
                             <Image className='project-preview-image-2' src='/projects/roomsetup.png'/>
                             <Image className='project-preview-image-3' src='/projects/hacktheridge.png'/>
