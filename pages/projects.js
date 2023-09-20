@@ -10,6 +10,7 @@ const PList = styled('ol')({
     listStyleType: 'none',
     position: 'relative',
     color: '#A7BC5B',
+    marginTop: 0,
     fontSize: 50,
     fontFamily: [
         'Archivo', 
@@ -19,10 +20,6 @@ const PList = styled('ol')({
     letterSpacing: '0.06em',
     paddingLeft: '0',
     counterReset: 'my-counter',
-    '@media (max-width: 849px)': {
-        marginTop: 25,
-        marginBottom: 0
-    }
 })
 
 const PItem = styled('li')({
@@ -207,7 +204,7 @@ const Projects = () => {
         document.querySelectorAll('.project-entry-box').forEach(entry => {
             entry.addEventListener('mouseenter', event => {
                 if (!overlay.active && event.fromElement != null) {
-                    const id = event.path[1].id
+                    const id = event.fromElement.id
                     overlay.style.transition = '0.4s'
                     overlay.style.transform = 'translateX(100%)'
     
@@ -229,7 +226,7 @@ const Projects = () => {
 
             entry.addEventListener('touchenter', event => {
                 if (!overlay.active && event.fromElement != null) {
-                    const id = event.path[1].id
+                    const id = event.fromElement.id
                     overlay.style.transition = '0.4s'
                     overlay.style.transform = 'translateX(100%)'
     
@@ -612,14 +609,11 @@ const Projects = () => {
                             justifyContent={{ xxsm: 'flex-start', xxs: 'center'}}
                             alignItems={{ xs: 'flex-start', xxs: 'flex-end'}}
                         >
-                            <BorderBox className='project-preview-image-box-1'><Stack width='100%' height='100%' justifyContent='center' alignItems='center'><PItemDesc>project preview available on github!</PItemDesc></Stack></BorderBox>
-                            <BorderBox className='project-preview-image-box-2'><Stack width='100%' height='100%' justifyContent='center' alignItems='center'><PItemDesc>project preview available on github!</PItemDesc></Stack></BorderBox>
-                            <BorderBox className='project-preview-image-box-3'><Stack width='100%' height='100%' justifyContent='center' alignItems='center'><PItemDesc>project preview available on github!</PItemDesc></Stack></BorderBox>
-                            <BorderBox className='project-preview-image-box-4'><Stack width='100%' height='100%' justifyContent='center' alignItems='center'><PItemDesc>project preview available on github!</PItemDesc></Stack></BorderBox>
-                            {/* <Image className='project-preview-image-1' src='/projects/greenreaper.png'/>
-                            <Image className='project-preview-image-2' src='/projects/roomsetup.png'/>
-                            <Image className='project-preview-image-3' src='/projects/hacktheridge.png'/>
-                            <Image className='project-preview-image-4' src= '/projects/osugen.png'/> */}
+                            <BorderBox className='project-preview-image-box-1'><Image className='project-preview-image-1' src='/projects/greenreaper.png'/><Stack width='100%' height='100%' justifyContent='center' alignItems='center'></Stack></BorderBox>
+                            <BorderBox className='project-preview-image-box-2'><Image className='project-preview-image-2' src='/projects/roomsetup.png'/><Stack width='100%' height='100%' justifyContent='center' alignItems='center'></Stack></BorderBox>
+                            <BorderBox className='project-preview-image-box-3'><Image className='project-preview-image-3' src='/projects/hacktheridge.png'/><Stack width='100%' height='100%' justifyContent='center' alignItems='center'></Stack></BorderBox>
+                            <BorderBox className='project-preview-image-box-4'><Image className='project-preview-image-4' src= '/projects/osugen.png'/><Stack width='100%' height='100%' justifyContent='center' alignItems='center'></Stack></BorderBox>
+                            {/* <PItemDesc>project preview available on github!</PItemDesc> */}
                             <Stack
                                 className='project-preview-descs'
                                 width={{ xs: '100%', xxs: '90%'}}

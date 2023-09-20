@@ -127,7 +127,7 @@ const Main = () => {
             <Stack 
                 direction='row' 
                 alignItems='center' 
-                justifyContent='center'
+                justifyContent='space-between'
                 height='90%'
                 width={{ xsm: '100%', xxs: '95%' }}
                 className='main-stack'
@@ -137,7 +137,6 @@ const Main = () => {
                     className='logo-bar'
                     direction='column'
                     sx={{
-                        width: { m: '25%', xxs: '18%'},
                         display: { sm: 'flex', xxs: 'none' }
                     }}
                     height='90%'
@@ -146,7 +145,6 @@ const Main = () => {
                     visibility='hidden'
                     spacing={36}
                     pl={53}
-                    pr={53}
                     pb={53}
                 >
                     <Stack
@@ -202,7 +200,7 @@ const Main = () => {
                         </SvgLinkWrapper>
                         <SvgDesc className='logo-desc'>github</SvgDesc>
                     </Stack>    
-                    <Stack
+                    {/* <Stack
                         className='logo-container'
                         direction='row'
                         width='100%'
@@ -228,7 +226,7 @@ const Main = () => {
                             </SvgWrapper>
                         </SvgLinkWrapper>
                         <SvgDesc className='logo-desc'>resume</SvgDesc>
-                    </Stack>
+                    </Stack> */}
 
                     <svg 
                         className='intro-line-svg'
@@ -247,7 +245,7 @@ const Main = () => {
                     spacing={{ sm: 25, xs: 15, xxs: 25 }}
                     width='50%'
                     sx={{
-                        width: { m: '50%', sm: '57%', xxs: '62%'}
+                        width: { m: '50%', sm: '57%', xxs: '82%'}
                     }}
                     height='100%'
                 >
@@ -265,19 +263,17 @@ const Main = () => {
                     >
                         <SvgDesc sx={{ pointerEvents: 'auto' }} className='mobile-desc' target="_blank" href="https://github.com/thom974">/ github</SvgDesc>
                         <SvgDesc sx={{ pointerEvents: 'auto' }} className='mobile-desc' target="_blank" href="https://www.linkedin.com/in/thomas-luc/">/ linkedin</SvgDesc>
-                        <SvgDesc sx={{ pointerEvents: 'auto' }} className='mobile-desc' target="_blank" href="/thomaslucresume.pdf">/ resume</SvgDesc>
+                        {/* <SvgDesc sx={{ pointerEvents: 'auto' }} className='mobile-desc' target="_blank" href="/thomaslucresume.pdf">/ resume</SvgDesc> */}
                     </Stack>
                 </Stack>
 
                 <Stack
                     className='scroll-bar'
                     direction='column'
-                    width='25%'
                     height='inherit'
                     justifyContent={{ sm: 'center', xxs: 'flex-end' }}
                     alignItems='flex-end'
                     spacing={36}
-                    pl={53}
                     pr={{ sm: 53, xs: 20, xxs: 15 }}
                     pb={53}
                 >
